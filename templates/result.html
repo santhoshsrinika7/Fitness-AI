@@ -2,27 +2,43 @@
 <html>
 
 <head>
-<title>Result</title>
+    <title>Fitness Result</title>
 </head>
 
 <body>
 
 <h1>Hello {{name}}</h1>
 
-<h2>Your BMI: {{bmi}}</h2>
+<h2>BMI: {{bmi}}</h2>
 
-<h2>Status: {{status}}</h2>
+<h2>Status: {{bmi_status}}</h2>
 
-<h2>Recommended Exercise</h2>
+<h2>Goal:{{goal}}</h2>
+  
+<h2>Calories Needed :{{calories}}</h2>
 
-<p>{{exercise}}</p>
+<h2>Workout Plan</h2>
+<ul>
+  {% for item in workout%}
+  <li>{{item}}</li>
+  {% endfor%}
+</ul>
 
-<h2>Diet Plan</h2>
+  <h2>Diet Plan</h2>
+  <ul>
+  {% for item in diet%}
+  <li>{{item}}</li>
+  {% endfor%}
 
-<p>{{diet}}</p>
+  </ul>
 
-<a href="/">Check Again</a>
+    <h2>Water Intake</h2>
+    <p>{{water}} Liters/day</p>
 
+    <h2>Sleep Recommendation</h2>
+    <p>{{sleep}}</p>
+  <a href="/">Check Again</a>
+    
 </body>
 
 </html>
