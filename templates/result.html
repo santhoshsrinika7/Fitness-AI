@@ -1,44 +1,104 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-    <title>Fitness Result</title>
+    <title>NEXORA Results</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f2f2f2;
+            text-align:center;
+            padding:30px;
+        }
+
+        .container{
+            background:white;
+            width:700px;
+            margin:auto;
+            padding:30px;
+            border-radius:15px;
+            box-shadow:0 0 15px gray;
+        }
+
+        h1{
+            color:#007bff;
+        }
+
+        h2{
+            color:#28a745;
+        }
+
+        ul{
+            text-align:left;
+            display:inline-block;
+        }
+
+        .btn{
+            text-decoration:none;
+            background:#007bff;
+            color:white;
+            padding:10px 20px;
+            border-radius:5px;
+        }
+
+        .btn:hover{
+            background:#0056b3;
+        }
+
+        hr{
+            margin:20px 0;
+        }
+    </style>
 </head>
 
 <body>
 
-<h1>Hello {{name}}</h1>
+<div class="container">
 
-<h2>BMI: {{bmi}}</h2>
+    <h1>NEXORA</h1>
+    <h3>Next Gen Optimized Recommendation AI</h3>
 
-<h2>Status: {{bmi_status}}</h2>
+    <hr>
 
-<h2>Goal:{{goal}}</h2>
-  
-<h2>Calories Needed :{{calories}}</h2>
+    <h2>Hello {{name}}</h2>
 
-<h2>Workout Plan</h2>
-<ul>
-  {% for item in workout%}
-  <li>{{item}}</li>
-  {% endfor%}
-</ul>
+    <p><b>BMI:</b> {{bmi}}</p>
 
-  <h2>Diet Plan</h2>
-  <ul>
-  {% for item in diet%}
-  <li>{{item}}</li>
-  {% endfor%}
+    <p><b>Status:</b> {{bmi_status}}</p>
 
-  </ul>
+    <p><b>Goal:</b> {{goal}}</p>
 
-    <h2>Water Intake</h2>
+    <p><b>Calories Needed:</b> {{calories}}</p>
+
+    <h2>🏋️ Workout Plan</h2>
+
+    <ul>
+        {% for item in workout %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>🥗 Diet Plan</h2>
+
+    <ul>
+        {% for item in diet %}
+        <li>{{item}}</li>
+        {% endfor %}
+    </ul>
+
+    <h2>💧 Water Intake</h2>
+
     <p>{{water}} Liters/day</p>
 
-    <h2>Sleep Recommendation</h2>
-    <p>{{sleep}}</p>
-  <a href="/">Check Again</a>
-    
-</body>
+    <h2>😴 Sleep Recommendation</h2>
 
+    <p>{{sleep}}</p>
+
+    <br><br>
+
+    <a href="/" class="btn">Check Again</a>
+
+</div>
+
+</body>
 </html>
