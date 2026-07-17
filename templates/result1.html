@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>NEXORA - BMI Report</title>
+
+    <style>
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#edf7f6,#ffffff,#d8ecff);
+    text-align:center;
+    padding:30px;
+}
+
+.container{
+    background:white;
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+h1{
+    color:#2563eb;
+}
+
+h2{
+    color:#16a34a;
+}
+
+.card{
+    width:80%;
+    margin:30px auto;
+    background:#f8fbff;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.btn{
+    text-decoration:none;
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:white;
+    padding:14px 28px;
+    border-radius:12px;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:linear-gradient(90deg,#1d4ed8,#2563eb);
+}
+
+</style>
+
+</head>
+
+<body>
+
+<style>
+.slide{
+display:none;
+}
+
+.slide.active{
+display:block;
+}
+
+.navigation{
+margin-top:30px;
+display:flex;
+justify-content:space-between;
+}
+
+.navbtn{
+text-decoration:none;
+background:linear-gradient(90deg,#2563eb,#3b82f6);
+color:white;
+padding:12px 24px;
+border-radius:12px;
+}
+</style>
+
+<div class="container">
+
+<div class="slide active">
+
+<h1>🧘 NEXORA</h1>
+
+<h3>AI Powered Health & Fitness Analysis</h3>
+
+<hr>
+
+<h2>Welcome, {{name}} 👋</h2>
+
+<div class="card">
+
+<h2>📊 BMI REPORT</h2>
+
+<p><b>BMI:</b> {{bmi}}</p>
+
+<p><b>Status:</b> {{bmi_status}}</p>
+
+<p><b>Goal:</b> {{goal}}</p>
+
+<p><b>Calories Needed:</b> {{calories}}</p>
+
+</div>
+
+<br>
+<!-- Navigation -->
+<div>
+    <a href="result2.html" class="btn">Next ➡️</a>
+</div>
+
+
+</div>
+
+</body>
+</html>
