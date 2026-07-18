@@ -8,51 +8,52 @@
 
     <!-- Hero Section -->
     <div class="hero">
-    <img src="{{ url_for('static', filename='images/yoga.svg') }}" 
-         alt="Fitness Banner" class="hero-img">
-    <div class="hero-text">
-        <h1>🧘‍♀️ NEXORA</h1>
-        <p>Next Gen Optimized Recommendation AI</p>
-        <p class="quote">"Today's mission: Stay fit, stay strong"</p>
+        <img src="{{ url_for('static', filename='images/yoga.svg') }}" 
+             alt="Fitness Banner" class="hero-img">
+        <div class="hero-text">
+            <h1>🧘‍♀️ NEXORA</h1>
+            <p>Next Gen Optimized Recommendation AI</p>
+            <p class="quote">"Today's mission: Stay fit, stay strong"</p>
+        </div>
     </div>
-</div>
-
 
     <!-- Form Section -->
-    <form action="/recommend" method="POST" class="form-card">
-        <label>Name:</label>
-        <input type="text" name="name" required>
+    <div class="form-card">
+        <form action="/recommend" method="POST">
+            <label>Name:</label>
+            <input type="text" name="name" required>
 
-        <label>Age:</label>
-        <input type="number" name="age" required>
+            <label>Age:</label>
+            <input type="number" name="age" required>
 
-        <label>Gender:</label>
-        <select name="gender">
-            <option>Male</option>
-            <option>Female</option>
-        </select>
+            <label>Gender:</label>
+            <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
+            </select>
 
-        <label>Height (cm):</label>
-        <input type="number" name="height" required>
+            <label>Height (cm):</label>
+            <input type="number" name="height" required>
 
-        <label>Weight (kg):</label>
-        <input type="number" name="weight" required>
+            <label>Weight (kg):</label>
+            <input type="number" name="weight" required>
 
-        <label>Diet Type:</label>
-        <select name="diet_type">
-            <option>Vegetarian</option>
-            <option>Non-Vegetarian</option>
-        </select>
+            <label>Diet Type:</label>
+            <select name="diet_type">
+                <option>Vegetarian</option>
+                <option>Non-Vegetarian</option>
+            </select>
 
-        <label>Goal:</label>
-        <select name="goal">
-            <option>Weight Loss</option>
-            <option>Muscle Gain</option>
-            <option>Maintain</option>
-        </select>
+            <label>Goal:</label>
+            <select name="goal">
+                <option>Weight Loss</option>
+                <option>Muscle Gain</option>
+                <option>Maintain</option>
+            </select>
 
-        <button type="submit">Get Recommendation</button>
-    </form>
+            <button type="submit">Get Recommendation</button>
+        </form>
+    </div>
 
 </body>
 </html>
