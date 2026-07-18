@@ -8,7 +8,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 40px; /* space between image and text */
+    gap: 40px;
     margin: 40px auto;
     max-width: 900px;
 }
@@ -21,7 +21,7 @@ body {
 }
 
 .hero-img-box {
-    width: 200px;   /* smaller size */
+    width: 200px;
     height: auto;
     display: block;
     margin: auto;
@@ -42,6 +42,13 @@ body {
     margin: 5px 0;
     color: #001f3f;
 }
+
+.quote {
+    font-style: italic;
+    color: #0074D9;
+    margin-top: 15px;
+}
+
 
 
 .form-card {
