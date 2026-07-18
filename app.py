@@ -3,12 +3,11 @@ import datetime
 from quotes import quotes
 
 @app.route("/")
-def home():
-    # pick quote based on day of year
+def index():
     day_of_year = datetime.datetime.now().timetuple().tm_yday
-    quote = quotes[day_of_year % len(quotes)]  # safe wrap-around
-
+    quote = quotes[day_of_year % len(quotes)]
     return render_template("index.html", quote=quote)
+
 
 
 app = Flask(__name__)
