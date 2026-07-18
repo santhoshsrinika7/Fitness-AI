@@ -3,15 +3,12 @@ from flask import Flask, render_template, request, session
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
-
 @app.route("/")
 def home():
     return render_template("index.html")
 
-
 @app.route("/recommend", methods=["POST"])
 def recommend():
-
     name = request.form["name"]
     age = int(request.form["age"])
     gender = request.form["gender"]
@@ -19,14 +16,6 @@ def recommend():
     weight = float(request.form["weight"])
     goal = request.form["goal"]
     diet_type = request.form["diet_type"]
-
-    session["user_context"] = {
-        "name": name,
-        "age": age,
-        "gender": gender,
-        "diet_type": diet_type,
-        "goal": goal
-    }
 
     # ---------------- BMI ----------------
     bmi = weight / ((height / 100) ** 2)
@@ -54,10 +43,7 @@ def recommend():
         calories = int(bmr)
 
     # ---------------- Water ----------------
-    if gender == "Male":
-        water = "3.7 Litres/day"
-    else:
-        water = "2.7 Litres/day"
+    water = "3.7 Litres/day" if gender == "Male" else "2.7 Litres/day"
 
     # ---------------- Sleep ----------------
     if age < 18:
@@ -96,7 +82,7 @@ def recommend():
     else:
         workout = ["Walking", "Yoga", "Cycling", "Stretching", "Meditation"]
 
-    # ---------------- Diet (Age + Gender + Type + Goal) ----------------
+    # ---------------- Diet ----------------
     diet = []
     if diet_type == "Vegetarian":
         if goal == "Weight Loss":
@@ -140,74 +126,12 @@ def recommend():
         else:
             diet = ["Eggs", "Chicken", "Fish", "Vegetables", "Whole Wheat"]
 
-    # ---------------- Result Page ----------------
-    return render_template(
-        "result1.html",
-        name=name,
-        bmi=round(bmi, 2),
-        bmi_status=bmi_status,
-        calories=calories,
-        workout=workout,
-        diet=diet,
-        water=water,
-        sleep=sleep,
-        goal=goal
-    )
-
-
-# ---------------- CHATBOT ----------------
-@app.route("/chat", methods=["POST"])
-def chat():
-    data = request.get_json()
-    user_message = data["message"].lower()
-    context = session.get("user_context", {})
-
-    if "protein" in user_message:
-        if context.get("diet_type") == "Vegetarian":
-            reply = "Best vegetarian protein sources are Paneer, Soy Chunks, Tofu, Milk, Lentils, Chickpeas and Sprouts."
-        else:
-            reply = "Best non-vegetarian protein sources are Eggs, Chicken, Fish and Lean Meat."
-
-    elif "water" in user_message:
-        if context.get("gender") == "Male":
-            reply = "Drink around 3.7 litres of water daily."
-        else:
-            reply = "Drink around 2.7 litres of water daily."
-
-    elif "sleep" in user_message:
-        age = context.get("age", 20)
-        if age < 18:
-            reply = "You should sleep 8-10 hours every night."
-        elif age <= 40:
-            reply = "You should sleep 7-9 hours every night."
-        elif age <= 64:
-            reply = "You should sleep 7-8 hours every night."
-        else:
-            reply = "You should sleep 6-8 hours every night."
-
-    elif "diet" in user_message:
-        if context.get("diet_type") == "Vegetarian":
-            reply = "Follow a vegetarian diet rich in paneer, tofu, dal, sprouts and vegetables."
-        else:
-            reply = "Follow a protein-rich diet including eggs, chicken and fish."
-
-    elif "workout" in user_message:
-        goal = context.get("goal")
-        if goal == "Weight Loss":
-            reply = "Focus on cardio, HIIT, walking and cycling."
-        elif goal == "Muscle Gain":
-            reply = "Focus on strength training and progressive overload."
-        else:
-            reply = "Walking, stretching and yoga are ideal."
-
-    elif "bmi" in user_message:
-        reply = "BMI is calculated using weight divided by height squared."
-
-    else:
-        reply = "Ask me about Diet, Workout, Water, Sleep, BMI or Calories."
-
-    return {"reply": reply}
-
-
-if __name__ == "__main__":
-    app.run(debug=True)
+    # ---------------- Save to session ----------------
+    session["name"] = name
+    session["age"] = age
+    session["gender"] = gender
+    session["goal"] = goal
+    session["diet_type"] = diet_type
+    session["bmi"] = round(bmi, 2)
+    session["bmi_status"] = bmi_status
+    session
