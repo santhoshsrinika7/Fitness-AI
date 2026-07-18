@@ -1,12 +1,15 @@
-from flask import Flask, render_template, request, session
+from flask import Flask, render_template
 import datetime
 from quotes import quotes
+
+app = Flask(__name__)
 
 @app.route("/")
 def index():
     day_of_year = datetime.datetime.now().timetuple().tm_yday
     quote = quotes[day_of_year % len(quotes)]
     return render_template("index.html", quote=quote)
+
 
 
 
