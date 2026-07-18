@@ -8,7 +8,8 @@
 
     <!-- Hero Section -->
     <div class="hero">
-        <img src="{{ url_for('static', filename='fitness_banner.jpg') }}" alt="Fitness Banner" class="hero-img">
+        <img src="{{ url_for('static', filename='images/fitness_banner.jpg') }}" 
+             alt="Fitness Banner" class="hero-img">
         <div class="hero-text">
             <h1>🧘‍♀️ NEXORA</h1>
             <p>Next Gen Optimized Recommendation AI</p>
@@ -17,7 +18,7 @@
     </div>
 
     <!-- Form Section -->
-    <form action="/recommend" method="POST">
+    <form action="/recommend" method="POST" class="form-card">
         <label>Name:</label>
         <input type="text" name="name" required>
 
