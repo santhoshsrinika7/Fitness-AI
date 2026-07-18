@@ -1,4 +1,15 @@
 from flask import Flask, render_template, request, session
+import datetime
+from quotes import quotes
+
+@app.route("/")
+def home():
+    # pick quote based on day of year
+    day_of_year = datetime.datetime.now().timetuple().tm_yday
+    quote = quotes[day_of_year % len(quotes)]  # safe wrap-around
+
+    return render_template("index.html", quote=quote)
+
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
