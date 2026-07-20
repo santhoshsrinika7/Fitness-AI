@@ -107,17 +107,16 @@ else:
 
         if age < 18:
 
-            workout = [
-                "🚶 30 min Walking",
-                "🚴 Cycling",
-                "🤸 Skipping",
-                "🧘 Stretching",
-                "🏃 Light Jogging"
-            ]
+    workout = [
+        "🚶 30 min Walking",
+        "🚴 Cycling",
+        "🤸 Skipping",
+        "🧘 Stretching",
+        "🏃 Light Jogging"
+    ]
+       elif age <= 40:
 
-        elif age <= 40:
-
-            if gender == "Male":
+   if gender == "Male":
 
     workout = [
         "🏋️ Chest Workout",
