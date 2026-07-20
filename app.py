@@ -285,7 +285,7 @@ def summary():
                 "🏊 Swimming",
                 "💨 Breathing Exercises"
             ]
-        ]
+        
        # =========================
     # DIET RECOMMENDATION
     # =========================
