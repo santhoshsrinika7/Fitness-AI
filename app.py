@@ -97,7 +97,7 @@ def recommend():
         "🚴 Cycling",
         "💪 Bodyweight Training"
     ]
-                ]
+
         else:
             workout = [
                 "🌅 Morning Walk",
