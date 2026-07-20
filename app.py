@@ -140,7 +140,7 @@ def result5():
 
 @app.route("/summary")
 def summary():
-    return render_template("summary.html", **session)
+    return render_template("result.html", **session)
 
 # =========================
 # CHATBOT
