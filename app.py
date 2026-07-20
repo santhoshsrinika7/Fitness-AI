@@ -66,17 +66,115 @@ def recommend():
     else:
         sleep = "😴 6–8 Hours"
 
-    # -------- Workout --------
+        # =========================
+    # WORKOUT RECOMMENDATION
+    # =========================
     workout = []
-    if goal == "Muscle Gain" and age < 18:
-        workout = [
-            "💪 Push-ups",
-            "🦵 Squats",
-            "🏋️ Pull-ups",
-            "🏋️ Light Dumbbells",
-            "🎗 Resistance Bands"
-        ]
-    # (continue with your other workout logic here, all strings closed properly)
+
+    if goal == "Weight Loss":
+        if age < 18:
+            workout = [
+                "🚶 30 min Walking",
+                "🚴 Cycling",
+                "🤸 Skipping",
+                "🧘 Stretching",
+                "🏃 Light Jogging"
+            ]
+        elif age <= 40:
+            if gender == "Male":
+                workout = [
+                    "🏋️ Chest Workout",
+                    "💪 Back Workout",
+                    "🦵 Leg Day",
+                    "🏋️ Shoulder Workout",
+                    "⚡ Deadlifts"
+                ]
+            else:
+                workout = [
+                    "🏋️ Strength Training",
+                    "🍑 Glute Workout",
+                    "🦵 Leg Workout",
+                    "🎗 Resistance Bands",
+                    "💪 Core Workout"
+                ]
+        else:
+            workout = [
+                "🌅 Morning Walk",
+                "🧘 Yoga",
+                "🏊 Swimming",
+                "🚶 Light Cardio",
+                "🤸 Stretching"
+            ]
+
+    elif goal == "Muscle Gain":
+        if age < 18:
+            workout = [
+                "💪 Push-ups",
+                "🦵 Squats",
+                "🏋️ Pull-ups",
+                "🏋️ Light Dumbbells",
+                "🎗 Resistance Bands"
+            ]
+        elif age <= 40:
+            if gender == "Male":
+                workout = [
+                    "🏋️ Chest Workout",
+                    "💪 Back Workout",
+                    "🦵 Leg Day",
+                    "🏋️ Shoulder Workout",
+                    "⚡ Deadlifts"
+                ]
+            else:
+                workout = [
+                    "🏋️ Strength Training",
+                    "🍑 Glute Workout",
+                    "🦵 Leg Workout",
+                    "🎗 Resistance Bands",
+                    "💪 Core Workout"
+                ]
+        else:
+            workout = [
+                "🎗 Resistance Bands",
+                "🏋️ Light Weights",
+                "🚶 Walking",
+                "🧘 Yoga",
+                "🤸 Mobility Exercises"
+            ]
+
+    elif goal == "Stay Fit":
+        if age < 18:
+            workout = [
+                "🏃 Light Jogging",
+                "🚴 Cycling",
+                "🤸 Skipping",
+                "⚽ Outdoor Sports",
+                "🧘 Stretching"
+            ]
+        elif age <= 40:
+            if gender == "Male":
+                workout = [
+                    "🏃 Running",
+                    "🏋️ Full Body Workout",
+                    "🚴 Cycling",
+                    "🧘 Yoga",
+                    "💪 Core Training"
+                ]
+            else:
+                workout = [
+                    "🚶 Brisk Walking",
+                    "🧘 Yoga",
+                    "💃 Dance Fitness",
+                    "🚴 Cycling",
+                    "💪 Pilates"
+                ]
+        else:
+            workout = [
+                "🚶 Morning Walk",
+                "🧘 Yoga",
+                "🤸 Stretching",
+                "🏊 Swimming",
+                "💨 Breathing Exercises"
+            ]
 
     # -------- Diet --------
     diet = []
