@@ -82,20 +82,21 @@ def recommend():
             ]
         elif age <= 40:
             if gender == "Male":
-                workout = [
-                    "🏋️ Chest Workout",
-                    "💪 Back Workout",
-                    "🦵 Leg Day",
-                    "🏋️ Shoulder Workout",
-                    "⚡ Deadlifts"
-                ]
+    workout = [
+        "🏃 Running",
+        "🔥 HIIT Workout",
+        "🤸 Jump Rope",
+        "🚴 Cycling",
+        "💪 Core Workout"
+    ]
             else:
-                workout = [
-                    "🏋️ Strength Training",
-                    "🍑 Glute Workout",
-                    "🦵 Leg Workout",
-                    "🎗 Resistance Bands",
-                    "💪 Core Workout"
+    workout = [
+        "🚶 Brisk Walk",
+        "🔥 HIIT Workout",
+        "🧘 Yoga",
+        "🚴 Cycling",
+        "💪 Bodyweight Training"
+    ]
                 ]
         else:
             workout = [
