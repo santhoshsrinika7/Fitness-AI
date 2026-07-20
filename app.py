@@ -31,67 +31,18 @@ def recommend():
     goal = request.form["goal"]
     diet_type = request.form["diet_type"]
 
+# ---------------- BMI ----------------
+bmi = weight / ((height / 100) ** 2)
 
-@app.route("/result1")
-def result1():
-    return render_template(
-        "result1.html",
-        name=session.get("name"),
-        bmi=session.get("bmi"),
-        bmi_status=session.get("bmi_status"),
-        goal=session.get("goal"),
-        calories=session.get("calories")
-    )
-
-
-@app.route("/result2")
-def result2():
-    return render_template(
-        "result2.html",
-        goal=session.get("goal"),
-        calories=session.get("calories")
-    )
-
-
-@app.route("/result3")
-def result3():
-    return render_template(
-        "result3.html",
-        workout=session.get("workout")
-    )
-
-
-@app.route("/result4")
-def result4():
-    return render_template(
-        "result4.html",
-        diet=session.get("diet")
-    )
-
-
-@app.route("/result5")
-def result5():
-    return render_template(
-        "result5.html",
-        water=session.get("water"),
-        sleep=session.get("sleep")
-    )
-
-
-@app.route("/summary")
-def summary():
-    return render_template(
-        "summary.html",
-        name=session.get("name"),
-        bmi=session.get("bmi"),
-        bmi_status=session.get("bmi_status"),
-        goal=session.get("goal"),
-        calories=session.get("calories"),
-        workout=session.get("workout"),
-        diet=session.get("diet"),
-        water=session.get("water"),
-        sleep=session.get("sleep")
-    )
+if bmi < 18.5:
+    bmi_status = "Underweight"
+elif bmi < 25:
+    bmi_status = "Healthy"
+elif bmi < 30:
+    bmi_status = "Overweight"
+else:
+    bmi_status = "Obese"
+    
        # =========================
     # FITNESS SCORE
     # =========================
@@ -168,24 +119,23 @@ def summary():
 
             if gender == "Male":
 
-                workout = [
-                    "🏃 Running",
-                    "🔥 HIIT Workout",
-                    "🤸 Jump Rope",
-                    "🚴 Cycling",
-                    "💪 Core Workout"
-                ]
+    workout = [
+        "🏋️ Chest Workout",
+        "💪 Back Workout",
+        "🦵 Leg Day",
+        "🏋️ Shoulder Workout",
+        "⚡ Deadlifts"
+    ]
 
-            else:
+else:
 
-                workout = [
-                    "🚶 Brisk Walk",
-                    "🔥 HIIT Workout",
-                    "🧘 Yoga",
-                    "🚴 Cycling",
-                    "💪 Bodyweight Training"
-                ]
-
+    workout = [
+        "🏋️ Strength Training",
+        "🍑 Glute Workout",
+        "🦵 Leg Workout",
+        "🎗 Resistance Bands",
+        "💪 Core Workout"
+    ]
         else:
 
             workout = [
@@ -402,24 +352,22 @@ def summary():
     # -------- Non-Vegetarian --------
     else:
 
-        if goal == "Weight Loss":
+if age < 18:
+    diet = [
+        "🥚 Boiled Eggs",
+        "🍗 Grilled Chicken",
+        "🥗 Salad",
+        "🥦 Vegetables"
+    ]
 
-            if age < 18:
-                diet = [
-                    "🥚 Boiled Eggs",
-                    "🍗 Grilled Chicken",
-                    "🥗 Salad",
-                    "🥦 Vegetables"
-                ]
-
-            elif age <= 40:
-                diet = [
-                    "🍗 Grilled Chicken",
-                    "🐟 Fish",
-                    "🥦 Vegetables",
-                    "🍚 Brown Rice",
-                    "🥗 Salad"
-                ]
+elif age <= 40:
+    diet = [
+        "🍗 Grilled Chicken",
+        "🐟 Fish",
+        "🥦 Vegetables",
+        "🍚 Brown Rice",
+        "🥗 Salad"
+    ]
 
             else:
                 diet = [
@@ -538,6 +486,66 @@ def summary():
         workout=workout,
         diet=diet
     )
+    @app.route("/result1")
+def result1():
+    return render_template(
+        "result1.html",
+        name=session.get("name"),
+        bmi=session.get("bmi"),
+        bmi_status=session.get("bmi_status"),
+        goal=session.get("goal"),
+        calories=session.get("calories")
+    )
+
+
+@app.route("/result2")
+def result2():
+    return render_template(
+        "result2.html",
+        goal=session.get("goal"),
+        calories=session.get("calories")
+    )
+
+
+@app.route("/result3")
+def result3():
+    return render_template(
+        "result3.html",
+        workout=session.get("workout")
+    )
+
+
+@app.route("/result4")
+def result4():
+    return render_template(
+        "result4.html",
+        diet=session.get("diet")
+    )
+
+
+@app.route("/result5")
+def result5():
+    return render_template(
+        "result5.html",
+        water=session.get("water"),
+        sleep=session.get("sleep")
+    )
+
+
+@app.route("/summary")
+def summary():
+    return render_template(
+        "summary.html",
+        name=session.get("name"),
+        bmi=session.get("bmi"),
+        bmi_status=session.get("bmi_status"),
+        goal=session.get("goal"),
+        calories=session.get("calories"),
+        workout=session.get("workout"),
+        diet=session.get("diet"),
+        water=session.get("water"),
+        sleep=session.get("sleep")
+    )
 
 
 # =========================
@@ -586,10 +594,10 @@ def chat():
         reply = f"😴 Recommended sleep: {session.get('sleep')}."
 
     elif "bmi" in message:
-        reply = f"📊 Your BMI is {bmi} ({session.get('bmi_status')})."
+    reply = f"📊 Your BMI is {bmi} ({session.get('bmi_status')})."
 
     elif "calories" in message:
-        reply = f"🔥 Your daily calorie target is approximately {calories} kcal."
+    reply = f"🔥 Your daily calorie target is approximately {calories} kcal."
 
     elif "goal" in message:
         reply = f"🎯 Your selected goal is {goal}."
