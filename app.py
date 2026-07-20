@@ -31,6 +31,67 @@ def recommend():
     goal = request.form["goal"]
     diet_type = request.form["diet_type"]
 
+
+@app.route("/result1")
+def result1():
+    return render_template(
+        "result1.html",
+        name=session.get("name"),
+        bmi=session.get("bmi"),
+        bmi_status=session.get("bmi_status"),
+        goal=session.get("goal"),
+        calories=session.get("calories")
+    )
+
+
+@app.route("/result2")
+def result2():
+    return render_template(
+        "result2.html",
+        goal=session.get("goal"),
+        calories=session.get("calories")
+    )
+
+
+@app.route("/result3")
+def result3():
+    return render_template(
+        "result3.html",
+        workout=session.get("workout")
+    )
+
+
+@app.route("/result4")
+def result4():
+    return render_template(
+        "result4.html",
+        diet=session.get("diet")
+    )
+
+
+@app.route("/result5")
+def result5():
+    return render_template(
+        "result5.html",
+        water=session.get("water"),
+        sleep=session.get("sleep")
+    )
+
+
+@app.route("/summary")
+def summary():
+    return render_template(
+        "summary.html",
+        name=session.get("name"),
+        bmi=session.get("bmi"),
+        bmi_status=session.get("bmi_status"),
+        goal=session.get("goal"),
+        calories=session.get("calories"),
+        workout=session.get("workout"),
+        diet=session.get("diet"),
+        water=session.get("water"),
+        sleep=session.get("sleep")
+    )
        # =========================
     # FITNESS SCORE
     # =========================
@@ -67,9 +128,9 @@ def recommend():
 
     # -------- Water --------
     if gender == "Male":
-        water = "💧 3.7 Litres/day"
+        water = "💧 3.7 "
     else:
-        water = "💧 2.7 Litres/day"
+        water = "💧 2.7 "
 
     # -------- Sleep --------
     if age < 18:
