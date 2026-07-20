@@ -1,65 +1,207 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>NEXORA Fitness</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NEXORA Fitness AI</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 <body>
 
-<!-- Hero Section -->
 <div class="hero">
-  <div class="hero-box">
-    <img src="{{ url_for('static', filename='images/yoga.svg') }}" 
-         alt="Yoga Illustration" class="hero-img-box">
-  </div>
-  <div class="hero-text">
-    <h1>🧘 NEXORA</h1>
-    <p>Next Gen Optimized Recommendation AI</p>
-<p class="quote">"{{ quote }}"</p>
 
-  </div>
+<div class="hero-left">
+
+<h1>🏋️ NEXORA</h1>
+
+<h3>Next Generation Optimized Recommendation AI</h3>
+
+<p class="quote">
+"{{ quote }}"
+</p>
+
+<div class="feature-box">
+
+<div class="feature">
+<i class="fa-solid fa-heart-pulse"></i>
+<p>BMI Analysis</p>
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-dumbbell"></i>
+<p>Workout Plan</p>
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-bowl-food"></i>
+<p>Diet Planner</p>
+</div>
+
+<div class="feature">
+<i class="fa-solid fa-robot"></i>
+<p>AI Assistant</p>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="hero-right">
+
+<img src="{{ url_for('static', filename='images/yoga.svg') }}"
+class="hero-image">
+
+</div>
+
 </div>
 
 
 
 
-    <!-- Form Section -->
-    <div class="form-card">
-        <form action="/recommend" method="POST">
-            <label>Name:</label>
-            <input type="text" name="name" required>
 
-            <label>Age:</label>
-            <input type="number" name="age" required>
+<div class="form-card">
 
-            <label>Gender:</label>
-            <select name="gender">
-                <option>Male</option>
-                <option>Female</option>
-            </select>
+<h2>Get Your Personal Fitness Report</h2>
 
-            <label>Height (cm):</label>
-            <input type="number" name="height" required>
+<p class="subtitle">
+Fill in your details to generate a personalized recommendation.
+</p>
 
-            <label>Weight (kg):</label>
-            <input type="number" name="weight" required>
+<form action="/recommend" method="POST">
 
-            <label>Diet Type:</label>
-            <select name="diet_type">
-                <option>Vegetarian</option>
-                <option>Non-Vegetarian</option>
-            </select>
+<label>
+<i class="fa-solid fa-user"></i>
+Name
+</label>
 
-            <label>Goal:</label>
-            <select name="goal">
-                <option>Weight Loss</option>
-                <option>Muscle Gain</option>
-                <option>Maintain</option>
-            </select>
+<input
+type="text"
+name="name"
+placeholder="Enter your name"
+required>
 
-            <button type="submit">Get Recommendation</button>
-        </form>
-    </div>
+
+<label>
+<i class="fa-solid fa-calendar"></i>
+Age
+</label>
+
+<input
+type="number"
+name="age"
+placeholder="Age"
+required>
+
+
+<label>
+<i class="fa-solid fa-venus-mars"></i>
+Gender
+</label>
+
+<select name="gender">
+
+<option>Male</option>
+
+<option>Female</option>
+
+</select>
+
+
+<label>
+<i class="fa-solid fa-ruler-vertical"></i>
+Height (cm)
+</label>
+
+<input
+type="number"
+name="height"
+placeholder="Height"
+required>
+
+
+<label>
+<i class="fa-solid fa-weight-scale"></i>
+Weight (kg)
+</label>
+
+<input
+type="number"
+name="weight"
+placeholder="Weight"
+required>
+
+
+<label>
+<i class="fa-solid fa-utensils"></i>
+Diet Type
+</label>
+
+<select name="diet_type">
+
+<option>Vegetarian</option>
+
+<option>Non-Vegetarian</option>
+
+</select>
+
+
+<label>
+<i class="fa-solid fa-bullseye"></i>
+Fitness Goal
+</label>
+
+<select name="goal">
+
+<option>Weight Loss</option>
+
+<option>Muscle Gain</option>
+
+<option>Maintain</option>
+
+</select>
+
+
+<div class="tip">
+
+💡
+Your recommendation is generated using your age, BMI,
+goal, gender and diet preference.
+
+</div>
+
+
+<button type="submit">
+
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+
+Generate My Fitness Plan
+
+</button>
+
+</form>
+
+</div>
+
+
+
+<p>
+
+<footer>
+    <p>© 2026 Team NEXORA | Powered by Flask & AI</p>
+</footer>
+</p>
 
 </body>
+
 </html>
