@@ -66,12 +66,14 @@ def recommend():
     else:
         sleep = "😴 6–8 Hours"
 
-        # =========================
+           # =========================
     # WORKOUT RECOMMENDATION
     # =========================
     workout = []
 
+    # -------- Weight Loss --------
     if goal == "Weight Loss":
+
         if age < 18:
             workout = [
                 "🚶 30 min Walking",
@@ -80,23 +82,26 @@ def recommend():
                 "🧘 Stretching",
                 "🏃 Light Jogging"
             ]
+
         elif age <= 40:
+
             if gender == "Male":
-    workout = [
-        "🏃 Running",
-        "🔥 HIIT Workout",
-        "🤸 Jump Rope",
-        "🚴 Cycling",
-        "💪 Core Workout"
-    ]
+                workout = [
+                    "🏃 Running",
+                    "🔥 HIIT Workout",
+                    "🤸 Jump Rope",
+                    "🚴 Cycling",
+                    "💪 Core Workout"
+                ]
+
             else:
-    workout = [
-        "🚶 Brisk Walk",
-        "🔥 HIIT Workout",
-        "🧘 Yoga",
-        "🚴 Cycling",
-        "💪 Bodyweight Training"
-    ]
+                workout = [
+                    "🚶 Brisk Walk",
+                    "🔥 HIIT Workout",
+                    "🧘 Yoga",
+                    "🚴 Cycling",
+                    "💪 Bodyweight Training"
+                ]
 
         else:
             workout = [
@@ -107,7 +112,9 @@ def recommend():
                 "🤸 Stretching"
             ]
 
+    # -------- Muscle Gain --------
     elif goal == "Muscle Gain":
+
         if age < 18:
             workout = [
                 "💪 Push-ups",
@@ -116,7 +123,9 @@ def recommend():
                 "🏋️ Light Dumbbells",
                 "🎗 Resistance Bands"
             ]
+
         elif age <= 40:
+
             if gender == "Male":
                 workout = [
                     "🏋️ Chest Workout",
@@ -125,6 +134,7 @@ def recommend():
                     "🏋️ Shoulder Workout",
                     "⚡ Deadlifts"
                 ]
+
             else:
                 workout = [
                     "🏋️ Strength Training",
@@ -133,6 +143,7 @@ def recommend():
                     "🎗 Resistance Bands",
                     "💪 Core Workout"
                 ]
+
         else:
             workout = [
                 "🎗 Resistance Bands",
@@ -142,7 +153,9 @@ def recommend():
                 "🤸 Mobility Exercises"
             ]
 
+    # -------- Stay Fit --------
     elif goal == "Stay Fit":
+
         if age < 18:
             workout = [
                 "🏃 Light Jogging",
@@ -151,7 +164,9 @@ def recommend():
                 "⚽ Outdoor Sports",
                 "🧘 Stretching"
             ]
+
         elif age <= 40:
+
             if gender == "Male":
                 workout = [
                     "🏃 Running",
@@ -160,6 +175,7 @@ def recommend():
                     "🧘 Yoga",
                     "💪 Core Training"
                 ]
+
             else:
                 workout = [
                     "🚶 Brisk Walking",
@@ -168,6 +184,7 @@ def recommend():
                     "🚴 Cycling",
                     "💪 Pilates"
                 ]
+
         else:
             workout = [
                 "🚶 Morning Walk",
