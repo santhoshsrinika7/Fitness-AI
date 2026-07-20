@@ -1,24 +1,15 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, session
 import datetime
 from quotes import quotes
-
-app = Flask(__name__)
-
-@app.route("/")
-def index():
-    day_of_year = datetime.datetime.now().timetuple().tm_yday
-    quote = quotes[day_of_year % len(quotes)]
-    return render_template("index.html", quote=quote)
-
-
-
 
 app = Flask(__name__)
 app.secret_key = "supersecretkey"
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    day_of_year = datetime.datetime.now().timetuple().tm_yday
+    quote = quotes[day_of_year % len(quotes)]
+    return render_template("index.html", quote=quote)
 
 @app.route("/recommend", methods=["POST"])
 def recommend():
@@ -55,96 +46,279 @@ def recommend():
     else:
         calories = int(bmr)
 
-    # ---------------- Water ----------------
-    water = "3.7 Litres/day" if gender == "Male" else "2.7 Litres/day"
+       # ---------------- Water ----------------
+    water = "💧 3.7 Litres/day" if gender == "Male" else "💧 2.7 Litres/day"
 
     # ---------------- Sleep ----------------
     if age < 18:
-        sleep = "8-10 hours"
+        sleep = "😴 8-10 hours"
     elif age <= 40:
-        sleep = "7-9 hours"
+        sleep = "😴"7-9 hours"
     elif age <= 64:
-        sleep = "7-8 hours"
+        sleep = "😴"7-8 hours"
     else:
-        sleep = "6-8 hours"
+        sleep = "😴"6-8 hours"
 
-    # ---------------- Workout ----------------
-    workout = []
+
+   # ---------------- Workout ----------------
+workout = []
+
+if goal == "Weight Loss":
+    if age < 18:
+        workout = [
+            "🚶 30 min Walking",
+            "🚴 Cycling",
+            "🤸 Skipping",
+            "🧘 Stretching",
+            "🏃 Light Jogging"
+        ]
+    elif age <= 40:
+        if gender == "Male":
+            workout = [
+                "🏃 Running",
+                "🔥 HIIT Workout",
+                "🤸 Jump Rope",
+                "🚴 Cycling",
+                "💪 Core Workout"
+            ]
+        else:
+            workout = [
+                "🚶 Brisk Walk",
+                "🔥 HIIT Workout",
+                "🧘 Yoga",
+                "🚴 Cycling",
+                "💪 Bodyweight Training"
+            ]
+    else:
+        workout = [
+            "🌅 Morning Walk",
+            "🧘 Yoga",
+            "🏊 Swimming",
+            "🚶 Light Cardio",
+            "🤸 Stretching"
+        ]
+
+elif goal == "Muscle Gain":
+    if age < 18:
+        workout = [
+            "💪 Push-ups",
+            "🦵 Squats",
+            "🏋️ Pull-ups",
+            "🏋️ Light Dumbbells",
+            "🎗 Resistance Bands"
+        ]
+    elif age <= 40:
+        if gender == "Male":
+            workout = [
+                "🏋️ Chest Workout",
+                "💪 Back Workout",
+                "🦵 Leg Day",
+                "🏋️ Shoulders",
+                "⚡ Deadlifts"
+            ]
+        else:
+            workout = [
+                "🏋️ Strength Training",
+                "🍑 Glute Workout",
+                "🦵 Leg Workout",
+                "🎗 Resistance Training",
+                "💪 Core Workout"
+            ]
+    else:
+        workout = [
+            "🎗 Resistance Bands",
+            "🏋️ Light Weights",
+            "🚶 Walking",
+            "🧘 Yoga",
+            "🤸 Mobility Exercises"
+        ]
+
+else:
+    workout = [
+        "🚶 Walking",
+        "🧘 Yoga",
+        "🚴 Cycling",
+        "🤸 Stretching",
+        "🧠 Meditation"
+    ]
+    # ---------------- Diet ----------------
+diet = []
+
+if diet_type == "Vegetarian":
+
     if goal == "Weight Loss":
         if age < 18:
-            workout = ["30 min Walking", "Cycling", "Skipping", "Stretching", "Light Jogging"]
+            diet = [
+                "🥣 Oats",
+                "🍎 Fruits",
+                "🌱 Sprouts",
+                "🍲 Dal",
+                "🥦 Green Vegetables"
+            ]
         elif age <= 40:
-            if gender == "Male":
-                workout = ["Running", "HIIT", "Jump Rope", "Cycling", "Core Workout"]
-            else:
-                workout = ["Brisk Walk", "HIIT", "Yoga", "Cycling", "Bodyweight Training"]
+            diet = [
+                "🍚 Brown Rice",
+                "🧀 Paneer",
+                "🍲 Dal",
+                "🥦 Vegetables",
+                "🍎 Fruits",
+                "🌱 Sprouts"
+            ]
         else:
-            workout = ["Morning Walk", "Yoga", "Swimming", "Light Cardio", "Stretching"]
+            diet = [
+                "🥣 Vegetable Soup",
+                "🥛 Curd",
+                "🫓 Chapati",
+                "🥦 Steamed Veggies",
+                "🍎 Fruits"
+            ]
 
     elif goal == "Muscle Gain":
         if age < 18:
-            workout = ["Push-ups", "Squats", "Pull-ups", "Light Dumbbells", "Resistance Bands"]
+            diet = [
+                "🥛 Milk",
+                "🧀 Paneer",
+                "🌱 Soy Chunks",
+                "🍌 Banana",
+                "🥜 Peanut Butter"
+            ]
         elif age <= 40:
             if gender == "Male":
-                workout = ["Chest Workout", "Back Workout", "Leg Day", "Shoulders", "Deadlifts"]
+                diet = [
+                    "🧀 Paneer",
+                    "🥛 Milk",
+                    "🌱 Soy Chunks",
+                    "🍲 Tofu",
+                    "🍛 Lentils",
+                    "🍌 Banana",
+                    "🥜 Peanut Butter"
+                ]
             else:
-                workout = ["Strength Training", "Glute Workout", "Leg Workout", "Resistance Training", "Core Workout"]
+                diet = [
+                    "🍲 Tofu",
+                    "🌱 Soy Chunks",
+                    "🧀 Paneer",
+                    "🍛 Lentils",
+                    "🥜 Nuts",
+                    "🍌 Banana"
+                ]
         else:
-            workout = ["Resistance Bands", "Light Weights", "Walking", "Yoga", "Mobility Exercises"]
+            diet = [
+                "🥛 Curd",
+                "🧀 Paneer",
+                "🥛 Milk",
+                "🥦 Vegetables",
+                "🥜 Nuts"
+            ]
 
     else:
-        workout = ["Walking", "Yoga", "Cycling", "Stretching", "Meditation"]
+        diet = [
+            "🫓 Chapati",
+            "🥦 Vegetables",
+            "🥛 Curd",
+            "🍎 Fruits",
+            "🥜 Nuts"
+        ]
 
-    # ---------------- Diet ----------------
-    diet = []
-    if diet_type == "Vegetarian":
-        if goal == "Weight Loss":
-            if age < 18:
-                diet = ["Oats", "Fruits", "Sprouts", "Dal", "Green Vegetables"]
-            elif age <= 40:
-                diet = ["Brown Rice", "Paneer", "Dal", "Vegetables", "Fruits", "Sprouts"]
-            else:
-                diet = ["Vegetable Soup", "Curd", "Chapati", "Steamed Veggies", "Fruits"]
-        elif goal == "Muscle Gain":
-            if age < 18:
-                diet = ["Milk", "Paneer", "Soy Chunks", "Banana", "Peanut Butter"]
-            elif age <= 40:
-                if gender == "Male":
-                    diet = ["Paneer", "Milk", "Soy Chunks", "Tofu", "Lentils", "Banana", "Peanut Butter"]
-                else:
-                    diet = ["Tofu", "Soy Chunks", "Paneer", "Lentils", "Nuts", "Banana"]
-            else:
-                diet = ["Curd", "Paneer", "Milk", "Vegetables", "Nuts"]
+else:  # Non-Vegetarian
+
+    if goal == "Weight Loss":
+        if age < 18:
+            diet = [
+                "🥚 Boiled Eggs",
+                "🍗 Grilled Chicken",
+                "🥗 Salad",
+                "🥦 Vegetables"
+            ]
+        elif age <= 40:
+            diet = [
+                "🍗 Grilled Chicken",
+                "🐟 Fish",
+                "🥦 Vegetables",
+                "🍚 Brown Rice",
+                "🥗 Salad"
+            ]
         else:
-            diet = ["Chapati", "Vegetables", "Curd", "Fruits", "Nuts"]
+            diet = [
+                "🐟 Fish Curry",
+                "🍗 Steamed Chicken",
+                "🥦 Vegetables",
+                "🥣 Soup"
+            ]
 
-    else:  # Non-Vegetarian
-        if goal == "Weight Loss":
-            if age < 18:
-                diet = ["Boiled Eggs", "Grilled Chicken", "Salad", "Vegetables"]
-            elif age <= 40:
-                diet = ["Grilled Chicken", "Fish", "Vegetables", "Brown Rice", "Salad"]
+    elif goal == "Muscle Gain":
+        if age < 18:
+            diet = [
+                "🥚 Eggs",
+                "🥛 Milk",
+                "🍗 Chicken",
+                "🍚 Rice",
+                "🍌 Banana"
+            ]
+        elif age <= 40:
+            if gender == "Male":
+                diet = [
+                    "🍗 Chicken Breast",
+                    "🥚 Eggs",
+                    "🐟 Fish",
+                    "🍖 Lean Meat",
+                    "🥛 Milk",
+                    "🍚 Rice",
+                    "🍌 Banana"
+                ]
             else:
-                diet = ["Fish Curry", "Steamed Chicken", "Vegetables", "Soup"]
-        elif goal == "Muscle Gain":
-            if age < 18:
-                diet = ["Eggs", "Milk", "Chicken", "Rice", "Banana"]
-            elif age <= 40:
-                if gender == "Male":
-                    diet = ["Chicken Breast", "Eggs", "Fish", "Lean Meat", "Milk", "Rice", "Banana"]
-                else:
-                    diet = ["Eggs", "Fish", "Chicken", "Milk", "Vegetables", "Nuts"]
-            else:
-                diet = ["Eggs", "Fish", "Chicken Soup", "Vegetables", "Rice"]
+                diet = [
+                    "🥚 Eggs",
+                    "🐟 Fish",
+                    "🍗 Chicken",
+                    "🥛 Milk",
+                    "🥦 Vegetables",
+                    "🥜 Nuts"
+                ]
         else:
-            diet = ["Eggs", "Chicken", "Fish", "Vegetables", "Whole Wheat"]
+            diet = [
+                "🥚 Eggs",
+                "🐟 Fish",
+                "🍗 Chicken Soup",
+                "🥦 Vegetables",
+                "🍚 Rice"
+            ]
 
-    # ---------------- Save to session ----------------
-    session["name"] = name
-    session["age"] = age
-    session["gender"] = gender
-    session["goal"] = goal
-    session["diet_type"] = diet_type
-    session["bmi"] = round(bmi, 2)
-    session["bmi_status"] = bmi_status
-    session
+    else:
+        diet = [
+            "🥚 Eggs",
+            "🍗 Chicken",
+            "🐟 Fish",
+            "🥦 Vegetables",
+            "🌾 Whole Wheat"
+        ]
+
+   # ---------------- Save to session ----------------
+
+session["name"] = name
+session["age"] = age
+session["gender"] = gender
+session["goal"] = goal
+session["diet_type"] = diet_type
+session["bmi"] = round(bmi, 2)
+session["bmi_status"] = bmi_status
+session["calories"] = calories
+session["water"] = water
+session["sleep"] = sleep
+session["workout"] = workout
+session["diet"] = diet
+
+# ---------------- Show Result ----------------
+
+return render_template(
+    "result1.html",
+    name=name,
+    bmi=round(bmi, 2),
+    bmi_status=bmi_status,
+    calories=calories,
+    water=water,
+    sleep=sleep,
+    workout=workout,
+    diet=diet,
+    goal=goal
+)
