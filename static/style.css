@@ -1,184 +1,280 @@
-<!DOCTYPE html>
-<html lang="en">
+html{
+    scroll-behavior:smooth;
+}
 
-<head>
+body{
+    font-family:Poppins,sans-serif;
+    background:linear-gradient(135deg,#d9f3ff,#f4f9ff,#d7fff2);
+    margin:0;
+    padding:0;
+}
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* Full Screen Hero */
+.hero{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:60px 8%;
+    background:linear-gradient(135deg,#edf7f6 0%,#d8ecff 50%,#ffffff 100%);
+    overflow:hidden;
+}
 
-<title>NEXORA Fitness AI</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+.hero-left{
+    flex:1;
+    max-width:600px;
+}
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
+.hero-right{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+.hero img{
+    width:100%;
+    max-width:760px;
+    height:auto;
+    animation:float 4s ease-in-out infinite;
+}
+.tagline{
+    display:inline-block;
+    padding:8px 18px;
+    background:#E8F3FF;
+    color:#3B82F6;
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:20px;
+}
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+.hero h1{
+    font-size:78px;
+    font-weight:700;
+    color:#16324F;
+    margin:10px 0;
+}
 
-</head>
+.hero h2{
+    font-size:34px;
+    color:#2F4858;
+    margin-bottom:20px;
+}
 
-<body>
+.hero-text{
+    font-size:20px;
+    color:#5C6B73;
+    line-height:1.8;
+    margin-bottom:35px;
+}
 
-<!-- ================= HERO SECTION ================= -->
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    text-decoration:none;
+    background:#4F8EF7;
+    color:white;
+    padding:16px 34px;
+    border-radius:50px;
+    font-weight:600;
+    transition:.3s;
+}
 
-<section class="hero">
+.hero-btn:hover{
+    background:#3B82F6;
+    transform:translateY(-5px);
+    box-shadow:0 12px 30px rgba(79,142,247,.35);
+}
 
-    <div class="hero-left">
+@keyframes float{
 
-        <span class="tagline">
-            <i class="fa-solid fa-sparkles"></i>
-            AI Powered Fitness Recommendation
-        </span>
+0%{transform:translateY(0);}
 
-        <h1>🏋️ NEXORA</h1>
+50%{transform:translateY(-12px);}
 
-        <h3>Next Generation Optimized Recommendation AI</h3>
+100%{transform:translateY(0);}
 
-        <p class="hero-text">
-            {{ quote }}
-        </p>
+}
 
-        <div class="feature-box">
+.feature-box{
 
-            <div class="feature">
-                <i class="fa-solid fa-heart-pulse"></i>
-                <p>BMI Analysis</p>
-            </div>
+display:grid;
 
-            <div class="feature">
-                <i class="fa-solid fa-dumbbell"></i>
-                <p>Workout Plan</p>
-            </div>
+grid-template-columns:repeat(2,1fr);
 
-            <div class="feature">
-                <i class="fa-solid fa-bowl-food"></i>
-                <p>Diet Planner</p>
-            </div>
+gap:15px;
 
-            <div class="feature">
-                <i class="fa-solid fa-robot"></i>
-                <p>AI Assistant</p>
-            </div>
+margin-top:30px;
 
-        </div>
+}
 
-    </div>
+.feature{
 
-    <div class="hero-right">
+background:white;
 
-        <img src="{{ url_for('static', filename='images/yoga.svg') }}"
-             alt="Fitness Illustration">
+padding:20px;
 
-    </div>
+border-radius:15px;
 
-</section>
+box-shadow:0 5px 20px rgba(0,0,0,.08);
 
-<!-- ================= FORM ================= -->
+text-align:center;
 
-<div class="form-card" id="fitness-form">
+transition:.3s;
 
-<h2>Get Your Personal Fitness Report</h2>
+}
 
-<p class="subtitle">
-Fill in your details to generate a personalized recommendation.
-</p>
+.feature:hover{
 
-<form action="/recommend" method="POST">
+transform:translateY(-6px);
 
-<label>
-<i class="fa-solid fa-user"></i>
-Name
-</label>
+}
 
-<input
-type="text"
-name="name"
-placeholder="Enter your name"
-required>
+.form-card{
 
-<label>
-<i class="fa-solid fa-calendar"></i>
-Age
-</label>
+width:500px;
 
-<input
-type="number"
-name="age"
-placeholder="Age"
-required>
+margin:40px auto;
 
-<label>
-<i class="fa-solid fa-venus-mars"></i>
-Gender
-</label>
+padding:35px;
 
-<select name="gender">
-<option>Male</option>
-<option>Female</option>
-</select>
+background:rgba(255,255,255,.8);
 
-<label>
-<i class="fa-solid fa-ruler-vertical"></i>
-Height (cm)
-</label>
+backdrop-filter:blur(15px);
 
-<input
-type="number"
-name="height"
-placeholder="Height"
-required>
+border-radius:25px;
 
-<label>
-<i class="fa-solid fa-weight-scale"></i>
-Weight (kg)
-</label>
+box-shadow:0 10px 35px rgba(0,0,0,.15);
 
-<input
-type="number"
-name="weight"
-placeholder="Weight"
-required>
+}
 
-<label>
-<i class="fa-solid fa-utensils"></i>
-Diet Type
-</label>
+input,select{
 
-<select name="diet_type">
-<option>Vegetarian</option>
-<option>Non-Vegetarian</option>
-</select>
+width:100%;
 
-<label>
-<i class="fa-solid fa-bullseye"></i>
-Fitness Goal
-</label>
+padding:12px;
 
-<select name="goal">
-<option>Weight Loss</option>
-<option>Muscle Gain</option>
-<option>Stay Fit</option>
-</select>
+margin-top:8px;
 
-<div class="tip">
-💡 Your recommendation is generated using your age, BMI, gender, diet preference and fitness goal.
-</div>
+margin-bottom:18px;
 
-<button type="submit">
-<i class="fa-solid fa-wand-magic-sparkles"></i>
-Generate My Fitness Plan
-</button>
+border-radius:10px;
 
-</form>
+border:1px solid #ddd;
 
-</div>
+font-size:15px;
 
-<footer>
-    <p>© 2026 Team NEXORA | Powered by Flask & AI</p>
-</footer>
+}
 
-</body>
+input:focus,
 
-</html>
+select:focus{
+
+border:2px solid #4f7cff;
+
+outline:none;
+
+}
+
+button{
+
+width:100%;
+
+padding:15px;
+
+background:#2f6bff;
+
+border:none;
+
+border-radius:12px;
+
+font-size:18px;
+
+color:white;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+background:#1747c7;
+
+transform:scale(1.03);
+
+}
+
+.tip{
+
+background:#eef7ff;
+
+padding:15px;
+
+border-left:5px solid #2f6bff;
+
+border-radius:10px;
+
+margin-bottom:20px;
+
+}
+
+footer{
+
+text-align:center;
+
+padding:25px;
+
+color:#555;
+
+}
+/* Mobile Responsive */
+@media (max-width:768px){
+
+.hero{
+    flex-direction:column-reverse;
+    text-align:center;
+    padding:40px 20px;
+}
+
+.hero-left,
+.hero-right{
+    width:100%;
+    max-width:100%;
+}
+
+.hero h1{
+    font-size:52px;
+}
+
+.hero h2{
+    font-size:24px;
+}
+
+.hero-text{
+    font-size:16px;
+}
+
+.hero img{
+    max-width:320px;
+    margin-bottom:30px;
+}
+
+.form-card{
+    width:90%;
+    padding:25px;
+}
+
+input,
+select,
+button{
+    width:100%;
+    font-size:16px;
+}
+
+}
