@@ -3,29 +3,107 @@
 <head>
     <title>NEXORA - Slide 4</title>
     <style>/* same CSS as above */
-body{font-family:Arial, Helvetica, sans-serif;background:linear-gradient(135deg,#edf7f6,#ffffff,#d8ecff);text-align:center;padding:30px;}
-        .container{background:white;width:90%;max-width:900px;margin:auto;padding:40px;border-radius:25px;box-shadow:0 15px 40px rgba(0,0,0,.15);}
-        h1{color:#2563eb;} h2{color:#16a34a;}
-        .card{width:80%;margin:30px auto;background:#f8fbff;padding:25px;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.08);}
-        .btn{text-decoration:none;background:linear-gradient(90deg,#2563eb,#3b82f6);color:white;padding:14px 28px;border-radius:12px;display:inline-block;transition:.3s;}
-        .btn:hover{background:linear-gradient(90deg,#1d4ed8,#2563eb);}
-       ul{
-    list-style-type:none;
-    padding-left:0;
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:linear-gradient(135deg,#edf7f6,#ffffff,#d8ecff);
+    text-align:center;
+    padding:30px;
+}
+
+.container{
+    background:white;
+    width:90%;
+    max-width:900px;
+    margin:auto;
+    padding:40px;
+    border-radius:25px;
+    box-shadow:0 15px 40px rgba(0,0,0,.15);
+}
+
+h1{
+    color:#2563eb;
+}
+
+h2{
+    color:#16a34a;
+}
+
+.card{
+    width:80%;
+    margin:30px auto;
+    background:#f8fbff;
+    padding:25px;
+    border-radius:18px;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+ul{
+    list-style:none;
+    padding:0;
     margin:0;
 }
 
 li{
     list-style:none;
-    margin:12px 0;
-    background:#f8fbff;
-    padding:15px;
-    border-radius:12px;
+    padding:10px 0;
     font-size:18px;
-    font-weight:600;
-    box-shadow:0 4px 10px rgba(0,0,0,.08);
 }
-</style>
+
+.btn{
+    text-decoration:none;
+    background:linear-gradient(90deg,#2563eb,#3b82f6);
+    color:white;
+    padding:14px 28px;
+    border-radius:12px;
+    display:inline-block;
+    transition:.3s;
+}
+
+.btn:hover{
+    background:linear-gradient(90deg,#1d4ed8,#2563eb);
+}
+
+.navigation{
+    display:flex;
+    justify-content:space-between;
+    margin-top:30px;
+}
+
+@media(max-width:768px){
+
+    body{
+        padding:15px;
+    }
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    .card{
+        width:100%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    li{
+        font-size:16px;
+    }
+
+    .navigation{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .btn{
+        width:100%;
+        text-align:center;
+    }
+
+}</style>
 </head>
 <body>
 <div class="container">
