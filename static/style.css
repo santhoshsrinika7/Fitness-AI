@@ -1,270 +1,184 @@
-body{
-    font-family:'Poppins',sans-serif;
-    background:linear-gradient(135deg,#d9f3ff,#f4f9ff,#d7fff2);
-    margin:0;
-    padding:0;
-}
+<!DOCTYPE html>
+<html lang="en">
 
-/* ================= HERO SECTION ================= */
+<head>
 
-.hero{
-    width:100%;
-    min-height:100vh;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:60px 8%;
-    background:linear-gradient(135deg,#edf7f6 0%,#d8ecff 50%,#ffffff 100%);
-    overflow:hidden;
-    box-sizing:border-box;
-}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-.hero-left{
-    flex:1;
-    max-width:600px;
-}
+<title>NEXORA Fitness AI</title>
 
-.hero-right{
-    flex:1;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-.hero img{
-    width:100%;
-    max-width:700px;
-    height:auto;
-    animation:float 4s ease-in-out infinite;
-}
+<link rel="preconnect" href="https://fonts.googleapis.com">
 
-/* Floating Animation */
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-@keyframes float{
-    0%{
-        transform:translateY(0px);
-    }
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    50%{
-        transform:translateY(-15px);
-    }
+</head>
 
-    100%{
-        transform:translateY(0px);
-    }
-}
+<body>
 
-/* Small Tag */
+<!-- ================= HERO SECTION ================= -->
 
-.tagline{
-    display:inline-block;
-    padding:8px 18px;
-    background:#E8F3FF;
-    color:#3B82F6;
-    border-radius:30px;
-    font-size:14px;
-    font-weight:600;
-    margin-bottom:20px;
-}
+<section class="hero">
 
-/* Heading */
+    <div class="hero-left">
 
-.hero h1{
-    font-size:78px;
-    color:#16324F;
-    margin:10px 0;
-}
+        <span class="tagline">
+            <i class="fa-solid fa-sparkles"></i>
+            AI Powered Fitness Recommendation
+        </span>
 
-.hero h2{
-    font-size:34px;
-    color:#2F4858;
-    margin-bottom:20px;
-}
+        <h1>🏋️ NEXORA</h1>
 
-.hero-text{
-    font-size:20px;
-    color:#5C6B73;
-    line-height:1.8;
-    margin-bottom:35px;
-}
+        <h3>Next Generation Optimized Recommendation AI</h3>
 
-/* Button */
+        <p class="hero-text">
+            {{ quote }}
+        </p>
 
-.hero-btn{
-    display:inline-flex;
-    align-items:center;
-    gap:10px;
-    text-decoration:none;
-    background:#4F8EF7;
-    color:white;
-    padding:16px 34px;
-    border-radius:50px;
-    font-weight:600;
-    transition:.3s;
-}
+        <div class="feature-box">
 
-.hero-btn:hover{
-    background:#3B82F6;
-    transform:translateY(-5px);
-    box-shadow:0 12px 30px rgba(79,142,247,.35);
-}
+            <div class="feature">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <p>BMI Analysis</p>
+            </div>
 
-/* ================= FEATURES ================= */
+            <div class="feature">
+                <i class="fa-solid fa-dumbbell"></i>
+                <p>Workout Plan</p>
+            </div>
 
-.feature-box{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:15px;
-    margin-top:30px;
-}
+            <div class="feature">
+                <i class="fa-solid fa-bowl-food"></i>
+                <p>Diet Planner</p>
+            </div>
 
-.feature{
-    background:white;
-    padding:20px;
-    border-radius:15px;
-    text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
-    transition:.3s;
-}
+            <div class="feature">
+                <i class="fa-solid fa-robot"></i>
+                <p>AI Assistant</p>
+            </div>
 
-.feature:hover{
-    transform:translateY(-6px);
-}
+        </div>
 
-/* ================= FORM ================= */
+    </div>
 
-.form-card{
-    width:500px;
-    max-width:90%;
-    margin:60px auto;
-    padding:35px;
-    background:rgba(255,255,255,.85);
-    backdrop-filter:blur(15px);
-    border-radius:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.15);
-}
+    <div class="hero-right">
 
-.form-card h2{
-    text-align:center;
-    color:#16324F;
-}
+        <img src="{{ url_for('static', filename='images/yoga.svg') }}"
+             alt="Fitness Illustration">
 
-.subtitle{
-    text-align:center;
-    color:#666;
-    margin-bottom:25px;
-}
+    </div>
 
-label{
-    font-weight:600;
-    display:block;
-    margin-top:12px;
-    margin-bottom:6px;
-}
+</section>
 
-input,
-select{
-    width:100%;
-    padding:12px;
-    border-radius:10px;
-    border:1px solid #ddd;
-    margin-bottom:18px;
-    font-size:15px;
-    box-sizing:border-box;
-}
+<!-- ================= FORM ================= -->
 
-input:focus,
-select:focus{
-    outline:none;
-    border:2px solid #4F8EF7;
-}
+<div class="form-card" id="fitness-form">
 
-/* Tip */
+<h2>Get Your Personal Fitness Report</h2>
 
-.tip{
-    background:#eef7ff;
-    padding:15px;
-    border-left:5px solid #2F6BFF;
-    border-radius:10px;
-    margin-bottom:20px;
-}
+<p class="subtitle">
+Fill in your details to generate a personalized recommendation.
+</p>
 
-/* Buttons */
+<form action="/recommend" method="POST">
 
-button{
-    width:100%;
-    padding:15px;
-    background:#2F6BFF;
-    color:white;
-    border:none;
-    border-radius:12px;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
-}
+<label>
+<i class="fa-solid fa-user"></i>
+Name
+</label>
 
-button:hover{
-    background:#1747C7;
-    transform:scale(1.02);
-}
+<input
+type="text"
+name="name"
+placeholder="Enter your name"
+required>
 
-/* ================= FOOTER ================= */
+<label>
+<i class="fa-solid fa-calendar"></i>
+Age
+</label>
 
-footer{
-    text-align:center;
-    padding:30px;
-    color:#666;
-}
+<input
+type="number"
+name="age"
+placeholder="Age"
+required>
 
-/* ================= MOBILE ================= */
+<label>
+<i class="fa-solid fa-venus-mars"></i>
+Gender
+</label>
 
-@media(max-width:768px){
+<select name="gender">
+<option>Male</option>
+<option>Female</option>
+</select>
 
-    .hero{
-        flex-direction:column-reverse;
-        text-align:center;
-        padding:40px 20px;
-    }
+<label>
+<i class="fa-solid fa-ruler-vertical"></i>
+Height (cm)
+</label>
 
-    .hero-left,
-    .hero-right{
-        max-width:100%;
-    }
+<input
+type="number"
+name="height"
+placeholder="Height"
+required>
 
-    .hero img{
-        max-width:320px;
-        margin-bottom:30px;
-    }
+<label>
+<i class="fa-solid fa-weight-scale"></i>
+Weight (kg)
+</label>
 
-    .hero h1{
-        font-size:52px;
-    }
+<input
+type="number"
+name="weight"
+placeholder="Weight"
+required>
 
-    .hero h2{
-        font-size:24px;
-    }
+<label>
+<i class="fa-solid fa-utensils"></i>
+Diet Type
+</label>
 
-    .hero-text{
-        font-size:16px;
-    }
+<select name="diet_type">
+<option>Vegetarian</option>
+<option>Non-Vegetarian</option>
+</select>
 
-    .hero-btn{
-        width:100%;
-        justify-content:center;
-    }
+<label>
+<i class="fa-solid fa-bullseye"></i>
+Fitness Goal
+</label>
 
-    .feature-box{
-        grid-template-columns:1fr;
-    }
+<select name="goal">
+<option>Weight Loss</option>
+<option>Muscle Gain</option>
+<option>Stay Fit</option>
+</select>
 
-    .form-card{
-        width:90%;
-        padding:25px;
-    }
+<div class="tip">
+💡 Your recommendation is generated using your age, BMI, gender, diet preference and fitness goal.
+</div>
 
-    input,
-    select,
-    button{
-        font-size:16px;
-    }
-}
+<button type="submit">
+<i class="fa-solid fa-wand-magic-sparkles"></i>
+Generate My Fitness Plan
+</button>
+
+</form>
+
+</div>
+
+<footer>
+    <p>© 2026 Team NEXORA | Powered by Flask & AI</p>
+</footer>
+
+</body>
+
+</html>
