@@ -1,35 +1,413 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>NEXORA - Slide 2</title>
-    <style>
-        /* same CSS as result1.html */
-        body{font-family:Arial, Helvetica, sans-serif;background:linear-gradient(135deg,#edf7f6,#ffffff,#d8ecff);text-align:center;padding:30px;}
-        .container{background:white;width:90%;max-width:900px;margin:auto;padding:40px;border-radius:25px;box-shadow:0 15px 40px rgba(0,0,0,.15);}
-        h1{color:#2563eb;} h2{color:#16a34a;}
-        .card{width:80%;margin:30px auto;background:#f8fbff;padding:25px;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.08);}
-        .btn{text-decoration:none;background:linear-gradient(90deg,#2563eb,#3b82f6);color:white;padding:14px 28px;border-radius:12px;display:inline-block;transition:.3s;}
-        .btn:hover{background:linear-gradient(90deg,#1d4ed8,#2563eb);}
-    </style>
+
+<title>NEXORA - Goal Report</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    font-family:'Poppins',Arial,sans-serif;
+
+    background:linear-gradient(135deg,#edf7f6,#d8ecff,#ffffff);
+
+    min-height:100vh;
+
+    padding:30px;
+
+    color:#1f2937;
+
+}
+
+
+/* HEADER */
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+.logo{
+
+    font-size:45px;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+    letter-spacing:2px;
+
+}
+
+
+.subtitle{
+
+    color:#475569;
+
+    font-size:18px;
+
+}
+
+
+
+/* NAVIGATION */
+
+.dashboard-nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin:25px auto;
+
+}
+
+
+.dashboard-nav a{
+
+    text-decoration:none;
+
+    color:#334155;
+
+    background:rgba(255,255,255,.65);
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+
+.dashboard-nav a:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+/* MAIN */
+
+.container{
+
+    width:90%;
+
+    max-width:900px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(20px);
+
+    padding:40px;
+
+    border-radius:30px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+
+
+h1{
+
+    text-align:center;
+
+    color:#16324F;
+
+}
+
+
+
+h2{
+
+    color:#16a34a;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.card{
+
+    background:#f8fbff;
+
+    padding:35px;
+
+    margin:25px auto;
+
+    border-radius:22px;
+
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+.goal-text{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+}
+
+
+
+.calorie-text{
+
+    font-size:40px;
+
+    font-weight:700;
+
+    color:#f97316;
+
+}
+
+
+
+.description{
+
+    margin-top:15px;
+
+    color:#64748b;
+
+    font-size:17px;
+
+}
+
+
+
+.home-btn{
+
+    text-align:center;
+
+    margin-top:25px;
+
+}
+
+
+.home-btn a{
+
+    text-decoration:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+
+.home-btn a:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+
+
+@media(max-width:700px){
+
+.container{
+
+width:100%;
+
+padding:25px;
+
+}
+
+
+.logo{
+
+font-size:35px;
+
+}
+
+
+.calorie-text{
+
+font-size:32px;
+
+}
+
+}
+
+
+</style>
+
+
 </head>
+
+
 <body>
+
+
+
+<div class="header">
+
+
+<div class="logo">
+NEXORA
+</div>
+
+
+<div class="subtitle">
+Your AI Fitness Report
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="dashboard-nav">
+
+
+<a href="/result1">📊 BMI</a>
+
+<a href="/result2">🎯 Goal</a>
+
+<a href="/result3">🏋️ Workout</a>
+
+<a href="/result4">🥗 Diet</a>
+
+<a href="/result5">💧 Lifestyle</a>
+
+<a href="/summary">📄 Summary</a>
+
+
+</div>
+
+
+
+
+
+
+<div class="container">
+
+
+<h1>🎯 GOAL & CALORIES</h1>
+
+
+
 <div class="card">
-    <h2>🎯 Goal</h2>
-    <h3>{{goal}}</h3>
 
-    <hr>
 
-    <h2>🔥 Daily Calories</h2>
-    <h1>{{calories}} kcal/day</h1>
-</div>
+<h2>Your Fitness Goal</h2>
 
-   
-    <!-- Navigation -->
-<div class="navigation">
-  <a href="/result1" class="btn">⬅️ Previous</a>
-  <a href="/result3" class="btn">Next ➡️</a>
-</div>
+
+<div class="goal-text">
+
+{{goal}}
 
 </div>
+
+
+<p class="description">
+
+Your fitness recommendation is generated according to your selected goal.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="card">
+
+
+<h2>🔥 Daily Calories Required</h2>
+
+
+<div class="calorie-text">
+
+{{calories}} kcal/day
+
+</div>
+
+
+<p class="description">
+
+This calorie requirement is calculated using your BMI, age, gender and fitness goal.
+
+</p>
+
+
+</div>
+
+
+
+
+
+<div class="home-btn">
+
+
+<a href="/">
+🏠 Back to Home
+</a>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
 </body>
+
 </html>
