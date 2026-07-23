@@ -1,162 +1,698 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>NEXORA Results</title>
 
-    <style>
-        body{
-            font-family: Arial, sans-serif;
-            background:#f2f2f2;
-            text-align:center;
-            padding:30px;
-        }
+<title>NEXORA - Full Report</title>
 
-        .container{
-            background:white;
-            width:700px;
-            margin:auto;
-            padding:30px;
-            border-radius:15px;
-            box-shadow:0 0 15px gray;
-        }
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        h1{
-            color:#007bff;
-        }
 
-        h2{
-            color:#28a745;
-        }
+<style>
 
-        ul{
-    list-style:none;
-    padding:0;
+*{
     margin:0;
-    }
+    padding:0;
+    box-sizing:border-box;
+}
 
-    li{
+
+body{
+
+    font-family:'Poppins',Arial,sans-serif;
+
+    background:linear-gradient(135deg,#edf7f6,#d8ecff,#ffffff);
+
+    min-height:100vh;
+
+    padding:30px;
+
+    color:#1f2937;
+
+}
+
+
+
+/* HEADER */
+
+.header{
+
+    text-align:center;
+
+    margin-bottom:25px;
+
+}
+
+
+.logo{
+
+    font-size:50px;
+
+    font-weight:700;
+
+    color:#2563eb;
+
+    letter-spacing:3px;
+
+}
+
+
+.subtitle{
+
+    color:#475569;
+
+    font-size:18px;
+
+}
+
+
+
+/* TOP NAVIGATION */
+
+
+.dashboard-nav{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin:25px auto;
+
+}
+
+
+.dashboard-nav a{
+
+    text-decoration:none;
+
+    color:#334155;
+
+    background:rgba(255,255,255,.7);
+
+    padding:12px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+    transition:.3s;
+
+}
+
+
+
+.dashboard-nav a:hover{
+
+    background:#2563eb;
+
+    color:white;
+
+    transform:translateY(-3px);
+
+}
+
+
+
+
+/* MAIN */
+
+.container{
+
+    width:95%;
+
+    max-width:1000px;
+
+    margin:auto;
+
+    background:rgba(255,255,255,.75);
+
+    backdrop-filter:blur(20px);
+
+    padding:40px;
+
+    border-radius:30px;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.12);
+
+}
+
+
+
+h1{
+
+    text-align:center;
+
+    color:#16324F;
+
+}
+
+
+h2{
+
+    color:#16a34a;
+
+    margin-bottom:15px;
+
+}
+
+
+
+
+.card{
+
+    background:#f8fbff;
+
+    padding:25px;
+
+    margin:25px 0;
+
+    border-radius:22px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+}
+
+
+
+
+.highlight{
+
+    font-size:24px;
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
+
+
+
+
+ul{
+
     list-style:none;
-    padding:8px 0;
-    }
 
-        .btn{
-            text-decoration:none;
-            background:#007bff;
-            color:white;
-            padding:10px 20px;
-            border-radius:5px;
-        }
+}
 
-        .btn:hover{
-            background:#0056b3;
-        }
 
-        hr{
-            margin:20px 0;
-        }
-    </style>
+
+li{
+
+    background:white;
+
+    padding:12px;
+
+    margin:10px 0;
+
+    border-radius:12px;
+
+    box-shadow:0 4px 10px rgba(0,0,0,.06);
+
+}
+
+
+
+
+/* BUTTON */
+
+
+.home-btn{
+
+    text-align:center;
+
+    margin-top:30px;
+
+}
+
+
+
+.btn{
+
+    text-decoration:none;
+
+    background:#2563eb;
+
+    color:white;
+
+    padding:15px 30px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+
+
+.btn:hover{
+
+    background:#1d4ed8;
+
+}
+
+
+
+
+
+/* CHATBOT */
+
+
+#chatbot{
+
+    position:fixed;
+
+    bottom:20px;
+
+    right:20px;
+
+    width:320px;
+
+    background:#f8fbff;
+
+    border-radius:20px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+    padding:15px;
+
+}
+
+
+
+#chat-window{
+
+    height:180px;
+
+    overflow-y:auto;
+
+    background:white;
+
+    padding:10px;
+
+    border-radius:12px;
+
+    text-align:left;
+
+}
+
+
+
+#chat-input{
+
+    width:70%;
+
+    padding:8px;
+
+    border-radius:10px;
+
+    border:1px solid #ddd;
+
+}
+
+
+
+.chat-btn{
+
+    width:25%;
+
+    padding:8px;
+
+    background:#2563eb;
+
+    color:white;
+
+    border:none;
+
+    border-radius:10px;
+
+}
+
+
+
+
+
+@media(max-width:700px){
+
+.container{
+
+padding:25px;
+
+}
+
+
+#chatbot{
+
+width:90%;
+
+right:5%;
+
+}
+
+
+.logo{
+
+font-size:35px;
+
+}
+
+}
+
+
+</style>
+
+
 </head>
+
+
 
 <body>
 
+
+
+<div class="header">
+
+<div class="logo">
+NEXORA
+</div>
+
+
+<div class="subtitle">
+Complete AI Fitness Report
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="dashboard-nav">
+
+
+<a href="/result1">📊 BMI</a>
+
+<a href="/result2">🎯 Goal</a>
+
+<a href="/result3">🏋️ Workout</a>
+
+<a href="/result4">🥗 Diet</a>
+
+<a href="/result5">💧 Lifestyle</a>
+
+<a href="/summary">📄 Summary</a>
+
+
+</div>
+
+
+
+
+
+
+
+
 <div class="container">
 
-    <h1>NEXORA</h1>
-    <h3>Next Gen Optimized Recommendation AI</h3>
 
-    <hr>
+<h1>📄 FULL FITNESS SUMMARY</h1>
 
-    <h2>Hi!!! {{name}}</h2>
 
-    <p><b>BMI:</b> {{bmi}}</p>
 
-    <p><b>Status:</b> {{bmi_status}}</p>
+<div class="card">
 
-    <p><b>Goal:</b> {{goal}}</p>
+<h2>👋 User Profile</h2>
 
-    <p><b>Calories Needed:</b> {{calories}}</p>
+<p>
+<b>Name:</b> {{name}}
+</p>
 
-    <h2>🏋️ Workout Plan</h2>
-
-    <ul>
-        {% for item in workout %}
-        <li>{{item}}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>🥗 Diet Plan</h2>
-
-    <ul>
-        {% for item in diet %}
-        <li>{{item}}</li>
-        {% endfor %}
-    </ul>
-
-    <h2>💧 Water Intake</h2>
-
-    <p>{{water}} Liters/day</p>
-
-    <h2>😴 Sleep Recommendation</h2>
-
-    <p>{{sleep}}</p>
-
-    <br><br>
-
-    <div class="navigation">
-  <a href="/result5" class="btn">⬅️ Previous</a>
-  <a href="/" class="btn">🏠 Back to Home</a>
-</div>
-
+<p>
+<b>Goal:</b> <span class="highlight">{{goal}}</span>
+</p>
 
 </div>
-<!-- Chatbot Section -->
-<div id="chatbot" style="position:fixed;bottom:20px;right:20px;width:300px;background:#f8fbff;border-radius:12px;box-shadow:0 5px 15px rgba(0,0,0,.1);padding:10px;">
-  <h4 style="margin:0 0 10px 0;">💬 Fitness Chatbot</h4>
-  <div id="chat-window" style="height:200px;overflow-y:auto;text-align:left;background:#fff;padding:5px;border-radius:8px;border:1px solid #ddd;"></div>
-  <input type="text" id="chat-input" placeholder="Ask me something..." style="width:70%;padding:5px;margin-top:5px;">
-  <button onclick="sendMessage()" style="width:25%;padding:5px;background:#2563eb;color:white;border:none;border-radius:8px;margin-top:5px;">Send</button>
+
+
+
+
+
+<div class="card">
+
+<h2>📊 BMI Report</h2>
+
+
+<p>
+<b>BMI:</b> {{bmi}}
+</p>
+
+
+<p>
+<b>Status:</b> {{bmi_status}}
+</p>
+
+
 </div>
 
 
 
-  <script>
-function sendMessage() {
 
-    const userMessage = document.getElementById("chat-input").value;
 
-    if (userMessage.trim() == "") {
-        return;
-    }
 
-    const chatWindow = document.getElementById("chat-window");
+<div class="card">
 
-    chatWindow.innerHTML += `
-        <p><b>😊 You:</b> ${userMessage}</p>
-    `;
 
-    fetch("/chat", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            message: userMessage
-        })
-    })
-    .then(response => response.json())
-    .then(data => {
+<h2>🔥 Calories</h2>
 
-        chatWindow.innerHTML += `
-            <p><b>🤖 Nexora:</b> ${data.reply}</p>
-        `;
 
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-        document.getElementById("chat-input").value = "";
+<p class="highlight">
 
-    });
+{{calories}} kcal/day
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>🏋️ Workout Plan</h2>
+
+
+<ul>
+
+{% for item in workout %}
+
+<li>{{item}}</li>
+
+{% endfor %}
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>🥗 Diet Plan</h2>
+
+
+<ul>
+
+{% for item in diet %}
+
+<li>{{item}}</li>
+
+{% endfor %}
+
+</ul>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>💧 Water Intake</h2>
+
+
+<p class="highlight">
+
+{{water}} Liters/day
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="card">
+
+
+<h2>😴 Sleep Recommendation</h2>
+
+
+<p class="highlight">
+
+{{sleep}}
+
+</p>
+
+
+</div>
+
+
+
+
+
+
+<div class="home-btn">
+
+<a href="/" class="btn">
+
+🏠 Back To Home
+
+</a>
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<!-- CHATBOT -->
+
+<div id="chatbot">
+
+
+<h3>
+💬 Nexora AI Assistant
+</h3>
+
+
+<div id="chat-window"></div>
+
+
+
+<input id="chat-input" placeholder="Ask about fitness...">
+
+
+<button class="chat-btn" onclick="sendMessage()">
+Send
+</button>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+
+function sendMessage(){
+
+
+let message=document.getElementById("chat-input").value;
+
+
+if(message.trim()==""){
+return;
+}
+
+
+
+let box=document.getElementById("chat-window");
+
+
+
+box.innerHTML += "<p><b>😊 You:</b> "+message+"</p>";
+
+
+
+fetch("/chat",{
+
+method:"POST",
+
+headers:{
+
+"Content-Type":"application/json"
+
+},
+
+body:JSON.stringify({
+
+message:message
+
+})
+
+})
+
+
+.then(response=>response.json())
+
+
+.then(data=>{
+
+
+box.innerHTML += "<p><b>🤖 Nexora:</b> "+data.reply+"</p>";
+
+box.scrollTop=box.scrollHeight;
+
+
+document.getElementById("chat-input").value="";
+
+
+});
+
 
 }
+
+
 </script>
 
+
+
+
 </body>
+
 </html>
