@@ -119,21 +119,47 @@
 
 <script>
 function sendMessage() {
-  const userMessage = document.getElementById("chat-input").value;
-  fetch("/chat", {
-    method: "POST",
-    headers: {"Content-Type": "application/json"},
-    body: JSON.stringify({message: userMessage})
-  })
-  .then(res => res.json())
-  .then(data => {
+ <script>
+function sendMessage() {
+
+    const userMessage = document.getElementById("chat-input").value;
+
+    if(userMessage.trim() == ""){
+        return;
+    }
+
     const chatWindow = document.getElementById("chat-window");
-    chatWindow.innerHTML += "<p><b>You:</b> " + userMessage + "</p>";
-    chatWindow.innerHTML += "<p><b>Bot:</b> " + data.reply + "</p>";
+
+    chatWindow.innerHTML += `
+        <p><b>😊 You:</b> ${userMessage}</p>
+    `;
+
+    fetch("/chat", {
+        method: "POST",
+        headers: {
+            "Content-Type":"application/json"
+        },
+        body: JSON.stringify({
+            message:userMessage
+        })
+    })
+
+    .then(response => response.json())
+
+    .then(data => {
+
+        chatWindow.innerHTML += `
+            <p><b>🤖 Nexora:</b> ${data.reply}</p>
+        `;
+
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+    });
+
     document.getElementById("chat-input").value = "";
-    chatWindow.scrollTop = chatWindow.scrollHeight; // auto-scroll
-  });
+
 }
+</script>
 </script>
 
 </body>
