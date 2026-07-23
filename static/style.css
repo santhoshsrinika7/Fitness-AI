@@ -19,6 +19,36 @@ body{
     padding:60px 8%;
     background:linear-gradient(135deg,#edf7f6 0%,#d8ecff 50%,#ffffff 100%);
     overflow:hidden;
+
+    position:relative;
+}
+.bg-circle{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(70px);
+    opacity:.35;
+    z-index:0;
+}
+
+.circle1{
+    width:420px;
+    height:420px;
+    background:#8FD3FF;
+    top:-120px;
+    right:-120px;
+}
+
+.circle2{
+    width:320px;
+    height:320px;
+    background:#B8F2E6;
+    bottom:-80px;
+    left:-80px;
+}
+.hero-left,
+.hero-right{
+    position:relative;
+    z-index:1;
 }
 
 
