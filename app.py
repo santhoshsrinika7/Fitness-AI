@@ -263,15 +263,42 @@ def summary():
 # =========================
 @app.route("/chat", methods=["POST"])
 def chat():
+
     data = request.get_json()
     message = data["message"].lower()
 
     if "bmi" in message:
-        reply = f"📊 Your BMI is {session.get('bmi')} ({session.get('bmi_status')})."
+        reply = f"Your BMI is {session.get('bmi')} ({session.get('bmi_status')})."
+
+    elif "weight" in message:
+        reply = "Your current goal is " + session.get("goal")
+
+    elif "goal" in message:
+        reply = "Your goal is " + session.get("goal")
+
+    elif "diet" in message:
+        reply = "Recommended diet: " + ", ".join(session.get("diet"))
+
+    elif "workout" in message or "exercise" in message:
+        reply = "Workout Plan: " + ", ".join(session.get("workout"))
+
+    elif "water" in message:
+        reply = "Drink " + session.get("water") + " litres of water every day."
+
+    elif "sleep" in message:
+        reply = "Recommended sleep: " + session.get("sleep")
+
     elif "calories" in message:
-        reply = f"🔥 Your daily calorie target is {session.get('calories')} kcal."
+        reply = f"Your daily calorie target is {session.get('calories')} kcal."
+
+    elif "hello" in message or "hi" in message:
+        reply = "Hello! I'm Nexora. Ask me about BMI, diet, workout, calories, sleep or water."
+
+    elif "thank" in message:
+        reply = "You're welcome! Stay healthy."
+
     else:
-        reply = "🤖 I can answer questions about your diet, workout, BMI, calories, water or sleep."
+        reply = "Sorry, I don't know that yet. Try asking about BMI, diet, workout, calories, water or sleep."
 
     return {"reply": reply}
 
