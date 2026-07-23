@@ -18,60 +18,45 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
 
 <body>
 
-<div class="hero">
+<!-- ================= HERO SECTION ================= -->
 
-<div class="hero-left">
+<section class="hero">
 
-<h1>🏋️ NEXORA</h1>
+    <div class="hero-left">
 
-<h3>Next Generation Optimized Recommendation AI</h3>
+        <span class="tagline">
+            <i class="fa-solid fa-sparkles"></i>
+            AI Powered Fitness Recommendation
+        </span>
 
-<p class="quote">
-"{{ quote }}"
-</p>
+        <h1>NEXORA</h1>
 
-<div class="feature-box">
+        <h2>Your Personal Fitness Guide</h2>
 
-<div class="feature">
-<i class="fa-solid fa-heart-pulse"></i>
-<p>BMI Analysis</p>
-</div>
+        <p class="hero-text">
+            Get personalized workout plans, healthy diet recommendations,
+            BMI analysis and lifestyle guidance tailored specifically for you.
+        </p>
 
-<div class="feature">
-<i class="fa-solid fa-dumbbell"></i>
-<p>Workout Plan</p>
-</div>
+        <a href="#fitness-form" class="hero-btn">
+            Get Started
+            <i class="fa-solid fa-arrow-down"></i>
+        </a>
 
-<div class="feature">
-<i class="fa-solid fa-bowl-food"></i>
-<p>Diet Planner</p>
-</div>
+    </div>
 
-<div class="feature">
-<i class="fa-solid fa-robot"></i>
-<p>AI Assistant</p>
-</div>
+    <div class="hero-right">
 
-</div>
+        <img src="{{ url_for('static', filename='images/yoga.svg') }}"
+             alt="Fitness Illustration">
 
-</div>
+    </div>
 
-
-<div class="hero-right">
-
-<div class="hero">
-    <img src="{{ url_for('static', filename='images/yoga.svg') }}" alt="Fitness Illustration">
-</div>
-
-</div>
-
-</div>
+</section>
 
 
 
-
-
-<div class="form-card">
+<div class="form-card" id="fitness-form">
 
 <h2>Get Your Personal Fitness Report</h2>
 
