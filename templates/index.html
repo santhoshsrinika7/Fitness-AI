@@ -1,210 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NEXORA Fitness AI</title>
+    <title>NEXORA Fitness AI</title>
 
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
 
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
-<nav class="navbar">
 
-    <div class="logo">
-        NEXORA
+    <!-- ================= NAVBAR ================= -->
+
+    <nav class="navbar">
+
+        <div class="logo">
+            NEXORA
+        </div>
+
+        <ul class="nav-links">
+
+            <li><a href="#">Home</a></li>
+
+            <li><a href="#fitness-form">Get Started</a></li>
+
+        </ul>
+
+    </nav>
+
+    <!-- ================= HERO ================= -->
+
+    <section class="hero">
+
+        <div class="bg-circle circle1"></div>
+        <div class="bg-circle circle2"></div>
+
+        <div class="hero-left">
+
+            <span class="tagline">
+                ✨ AI Powered Fitness Recommendation
+            </span>
+
+            <h1>NEXORA</h1>
+
+            <h2>Your Personal Fitness Guide</h2>
+
+            <p class="hero-text">
+                Get personalized workout plans,
+                healthy diet recommendations,
+                BMI analysis and lifestyle guidance
+                tailored specifically for you.
+            </p>
+
+            <a href="#fitness-form" class="hero-btn">
+                Get Started →
+            </a>
+
+        </div>
+
+        <div class="hero-right">
+
+            <img
+                src="{{ url_for('static', filename='images/hero.png') }}"
+                alt="Fitness Illustration">
+
+        </div>
+
+    </section>
+
+    <!-- ================= SCROLL BUTTON ================= -->
+
+    <div class="scroll-down">
+
+        <a href="#fitness-form">
+            ↓
+        </a>
+
     </div>
 
-    <ul class="nav-links">
+    <!-- ================= FORM ================= -->
 
-        <li><a href="#">Home</a></li>
+    <div class="form-card" id="fitness-form">
 
-        <li><a href="#fitness-form">Get Started</a></li>
+        <h2>Get Your Personal Fitness Report</h2>
 
-    </ul>
+        <p class="subtitle">
+            Fill in your details to generate a personalized recommendation.
+        </p>
 
-</nav>
-<!-- ================= HERO SECTION ================= -->
+        <form action="/recommend" method="POST">
 
-<section class="hero">
-    <div class="bg-circle circle1"></div>
-<div class="bg-circle circle2"></div>
+            <label>
+                <i class="fa-solid fa-user"></i>
+                Name
+            </label>
 
-   <div class="hero-left">
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required>
 
-    <span class="tagline">
-        ✨ AI Powered Fitness Recommendation
-    </span>
+            <label>
+                <i class="fa-solid fa-calendar"></i>
+                Age
+            </label>
 
-    <h1>NEXORA</h1>
+            <input
+                type="number"
+                name="age"
+                placeholder="Age"
+                required>
 
-    <h2>Your Personal Fitness Guide</h2>
+            <label>
+                <i class="fa-solid fa-venus-mars"></i>
+                Gender
+            </label>
 
-    <p class="hero-text">
-        Get personalized workout plans, healthy diet recommendations,
-        BMI analysis and lifestyle guidance tailored specifically for you.
-    </p>
+            <select name="gender">
 
-    <a href="#fitness-form" class="hero-btn">
-        Get Started →
-    </a>
+                <option>Male</option>
+                <option>Female</option>
 
-</div>
-    <div class="hero-right">
+            </select>
 
-        <img src="{{ url_for('static', filename='images/hero.png') }}">
-             alt="Fitness Illustration">
+            <label>
+                <i class="fa-solid fa-ruler-vertical"></i>
+                Height (cm)
+            </label>
+
+            <input
+                type="number"
+                name="height"
+                placeholder="Height"
+                required>
+
+            <label>
+                <i class="fa-solid fa-weight-scale"></i>
+                Weight (kg)
+            </label>
+
+            <input
+                type="number"
+                name="weight"
+                placeholder="Weight"
+                required>
+
+            <label>
+                <i class="fa-solid fa-utensils"></i>
+                Diet Type
+            </label>
+
+            <select name="diet_type">
+
+                <option>Vegetarian</option>
+                <option>Non-Vegetarian</option>
+
+            </select>
+
+            <label>
+                <i class="fa-solid fa-bullseye"></i>
+                Fitness Goal
+            </label>
+
+            <select name="goal">
+
+                <option>Weight Loss</option>
+                <option>Muscle Gain</option>
+                <option>Stay Fit</option>
+
+            </select>
+
+            <div class="tip">
+
+                💡 Your recommendation is generated using your
+                age, BMI, goal, gender and diet preference.
+
+            </div>
+
+            <button type="submit">
+
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                Generate My Fitness Plan
+
+            </button>
+
+        </form>
 
     </div>
 
-</section>
+    <!-- ================= FOOTER ================= -->
 
-<div class="scroll-down">
+    <footer>
 
-    <a href="#fitness-form">
-        ↓
-    </a>
+        © 2026 Team NEXORA | Powered by Flask & AI
 
-</div>
-<div class="form-card" id="fitness-form">
-
-<h2>Get Your Personal Fitness Report</h2>
-
-<p class="subtitle">
-Fill in your details to generate a personalized recommendation.
-</p>
-
-<form action="/recommend" method="POST">
-
-<label>
-<i class="fa-solid fa-user"></i>
-Name
-</label>
-
-<input
-type="text"
-name="name"
-placeholder="Enter your name"
-required>
-
-
-<label>
-<i class="fa-solid fa-calendar"></i>
-Age
-</label>
-
-<input
-type="number"
-name="age"
-placeholder="Age"
-required>
-
-
-<label>
-<i class="fa-solid fa-venus-mars"></i>
-Gender
-</label>
-
-<select name="gender">
-
-<option>Male</option>
-
-<option>Female</option>
-
-</select>
-
-
-<label>
-<i class="fa-solid fa-ruler-vertical"></i>
-Height (cm)
-</label>
-
-<input
-type="number"
-name="height"
-placeholder="Height"
-required>
-
-
-<label>
-<i class="fa-solid fa-weight-scale"></i>
-Weight (kg)
-</label>
-
-<input
-type="number"
-name="weight"
-placeholder="Weight"
-required>
-
-
-<label>
-<i class="fa-solid fa-utensils"></i>
-Diet Type
-</label>
-
-<select name="diet_type">
-
-<option>Vegetarian</option>
-
-<option>Non-Vegetarian</option>
-
-</select>
-
-
-<label>
-<i class="fa-solid fa-bullseye"></i>
-Fitness Goal
-</label>
-
-<select name="goal">
-
-<option>Weight Loss</option>
-
-<option>Muscle Gain</option>
-
-<option>Stay Fit</option>
-
-</select>
-
-
-<div class="tip">
-
-💡
-Your recommendation is generated using your age, BMI,
-goal, gender and diet preference.
-
-</div>
-
-
-<button type="submit">
-
-<i class="fa-solid fa-wand-magic-sparkles"></i>
-
-Generate My Fitness Plan
-
-</button>
-
-</form>
-
-</div>
-
-
-
-<p>
-
-<footer>
-    <p>© 2026 Team NEXORA | Powered by Flask & AI</p>
-</footer>
-</p>
+    </footer>
 
 </body>
 
