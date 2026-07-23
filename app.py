@@ -259,96 +259,298 @@ def summary():
     return render_template("result.html", **session)
 
 # =========================
-# CHATBOT
+# AI FITNESS CHATBOT
 # =========================
+
 @app.route("/chat", methods=["POST"])
 def chat():
+
     data = request.get_json()
+
     message = data["message"].lower()
 
-    # Greetings
-    if any(word in message for word in ["hi", "hello", "hey"]):
-        reply = f"Hello {session.get('name','')}! 👋 I'm Nexora. Ask me about your workout, diet, BMI, calories, sleep or water."
 
-    elif "how are you" in message or "how are u" in message:
-        reply = "😊 I'm doing great! I'm ready to help with your fitness journey."
+    name = session.get("name","User")
+    bmi = session.get("bmi")
+    bmi_status = session.get("bmi_status")
+    calories = session.get("calories")
+    workout = session.get("workout",[])
+    diet = session.get("diet",[])
+    water = session.get("water")
+    sleep = session.get("sleep")
+    goal = session.get("goal")
 
-    elif "thank" in message:
-        reply = "You're welcome! 💙 Stay healthy."
 
-    # BMI
-    elif "bmi" in message:
-        reply = f"📊 Your BMI is {session.get('bmi')} ({session.get('bmi_status')})."
 
-    # Calories
-    elif "calorie" in message or "calories" in message:
-        reply = f"🔥 Your recommended daily calories are {session.get('calories')} kcal."
+    # ---------------- GREETINGS ----------------
 
-    # Water
-    elif "water" in message or "drink" in message:
-        reply = f"💧 Recommended water intake: {session.get('water')} litres per day."
+    if any(word in message for word in ["hi","hello","hey","hii"]):
 
-    # Sleep
+        reply = f"""
+        Hello {name}! 👋😊
+
+        I am Nexora AI Fitness Assistant.
+
+        I can help you with:
+        🏋️ Workout plans
+        🥗 Diet suggestions
+        📊 BMI analysis
+        🔥 Calories
+        💧 Water intake
+        😴 Sleep
+        💪 Fitness tips
+
+        Ask me anything!
+        """
+
+
+
+    # ---------------- PERSONAL REPORT ----------------
+
+
+    elif "my report" in message or "summary" in message:
+
+        reply = f"""
+        📄 Your Fitness Summary:
+
+        📊 BMI: {bmi}
+        Status: {bmi_status}
+
+        🎯 Goal:
+        {goal}
+
+        🔥 Daily Calories:
+        {calories} kcal
+
+        💧 Water:
+        {water} litres/day
+
+        😴 Sleep:
+        {sleep}
+
+        Keep following your plan consistently! 💙
+        """
+
+
+
+    # ---------------- BMI ----------------
+
+
+    elif "bmi" in message or "weight status" in message:
+
+        if bmi_status == "Healthy":
+
+            advice="Your BMI is in a healthy range. Maintain your current lifestyle."
+
+        elif bmi_status=="Underweight":
+
+            advice="Try increasing healthy calories and include protein-rich foods."
+
+        elif bmi_status=="Overweight":
+
+            advice="Focus on regular workouts, balanced diet and calorie control."
+
+        else:
+
+            advice="Consider improving activity levels and following a healthy eating plan."
+
+
+        reply=f"""
+        📊 BMI Analysis:
+
+        Your BMI: {bmi}
+
+        Category:
+        {bmi_status}
+
+        AI Advice:
+        {advice}
+        """
+
+
+
+    # ---------------- CALORIES ----------------
+
+
+    elif "calorie" in message or "energy" in message:
+
+        reply=f"""
+        🔥 Your Daily Calorie Requirement:
+
+        {calories} kcal/day
+
+        This is calculated using:
+        ✔ Age
+        ✔ Gender
+        ✔ Height
+        ✔ Weight
+        ✔ Fitness Goal
+
+        Remember: Calories should come from nutritious foods.
+        """
+
+
+
+    # ---------------- WORKOUT ----------------
+
+
+    elif any(word in message for word in 
+             ["workout","exercise","training","gym"]):
+
+        reply="""
+        💪 Your Personalized Workout Plan:
+
+        """ + "<br>".join(workout) + """
+
+        Tips:
+        ✅ Warm up before exercise
+        ✅ Stay consistent
+        ✅ Increase intensity slowly
+        """
+
+
+
+    # ---------------- DIET ----------------
+
+
+    elif any(word in message for word in
+             ["diet","food","eat","meal"]):
+
+        reply="""
+        🥗 Your Recommended Diet:
+
+        """ + "<br>".join(diet) + """
+
+        Healthy Eating Tips:
+
+        🥦 Include vegetables
+        🍎 Eat fruits daily
+        💧 Drink enough water
+        🥚 Maintain protein intake
+        """
+
+
+
+    # ---------------- WATER ----------------
+
+
+    elif "water" in message or "hydration" in message:
+
+        reply=f"""
+        💧 Hydration Recommendation:
+
+        Your recommended intake:
+        {water} litres/day
+
+        Tip:
+        Drink water throughout the day instead of drinking a lot at once.
+        """
+
+
+
+    # ---------------- SLEEP ----------------
+
+
     elif "sleep" in message or "rest" in message:
-        reply = f"😴 Recommended sleep: {session.get('sleep')}."
 
-    # Workout
-    elif "workout" in message or "exercise" in message:
-        reply = "💪 Your workout plan includes:<br>" + "<br>".join(session.get("workout", []))
+        reply=f"""
+        😴 Sleep Recommendation:
 
-    # Diet
-    elif "diet" in message or "food" in message:
-        reply = "🥗 Your recommended diet includes:<br>" + "<br>".join(session.get("diet", []))
+        {sleep}
 
-    # Walking
-    elif "walking" in message:
-        reply = "🚶 Walking for 30-45 minutes daily is recommended for general fitness."
+        Good sleep helps:
+        ✔ Muscle recovery
+        ✔ Better concentration
+        ✔ Energy levels
+        """
 
-    # Running
-    elif "running" in message or "jogging" in message:
-        reply = "🏃 Beginners should start with 20-30 minutes of running or jogging, 3-5 days a week."
 
-    # Cycling
-    elif "cycling" in message or "cycle" in message:
-        reply = "🚴 Cycling for about 30-45 minutes (or 8-15 km) is a great workout. Beginners can start with 3-4 sessions per week."
 
-    # Pushups
-    elif "push" in message:
-        reply = "💪 Beginners can start with 8-12 push-ups for 2-3 sets."
+    # ---------------- FITNESS QUESTIONS ----------------
 
-    # Squats
-    elif "squat" in message:
-        reply = "🦵 Beginners should try 10-15 squats for 2-3 sets."
 
-    # Yoga
-    elif "yoga" in message:
-        reply = "🧘 20-30 minutes of yoga daily helps improve flexibility and reduces stress."
-
-    # Protein
     elif "protein" in message:
-        reply = "🥚 Protein helps build and repair muscles. Include eggs, chicken, fish, milk, beans or paneer."
 
-    # Weight loss
+        reply="""
+        🥚 Protein helps your body repair and build muscles.
+
+        Sources:
+        Vegetarian:
+        🥛 Milk
+        🫘 Beans
+        🧀 Paneer
+
+        Non-Vegetarian:
+        🍗 Chicken
+        🥚 Eggs
+        🐟 Fish
+        """
+
+
+
     elif "weight loss" in message:
-        reply = "🔥 Weight loss works best with calorie deficit, regular cardio, strength training and healthy eating."
 
-    # Muscle gain
-    elif "muscle" in message:
-        reply = "💪 For muscle gain, focus on strength training, protein-rich food and proper sleep."
+        reply="""
+        🔥 Weight Loss Tips:
+
+        ✅ Maintain calorie balance
+        ✅ Do cardio + strength training
+        ✅ Eat enough protein
+        ✅ Sleep properly
+        ✅ Stay consistent
+
+        Small daily improvements create big results.
+        """
+
+
+
+    elif "muscle" in message or "muscle gain" in message:
+
+        reply="""
+        💪 Muscle Gain Tips:
+
+        ✅ Strength training
+        ✅ Protein-rich diet
+        ✅ Progressive overload
+        ✅ Proper recovery
+        ✅ 7-9 hours sleep
+        """
+
+
+
+    elif "motivate" in message or "motivation" in message:
+
+        reply="""
+        🚀 Remember:
+
+        Fitness is not about being perfect.
+        It is about improving yourself every day.
+
+        One workout. One healthy meal.
+        One step closer to your goal. 💙
+        """
+
+
+
+    # ---------------- DEFAULT ----------------
+
 
     else:
-        reply = (
-            "🤖 I don't know that yet.<br><br>"
-            "Try asking:<br>"
-            "• What is my BMI?<br>"
-            "• Show my workout<br>"
-            "• Show my diet<br>"
-            "• How much water should I drink?<br>"
-            "• How many calories do I need?<br>"
-            "• How long should I sleep?<br>"
-            "• Is cycling good?<br>"
-            "• How many pushups should I do?"
-        )
+
+        reply="""
+        🤖 I can help you with:
+
+        📊 What is my BMI?
+        🔥 How many calories do I need?
+        🏋️ Show my workout
+        🥗 Show my diet
+        💧 How much water should I drink?
+        😴 How much sleep do I need?
+        💪 Give fitness tips
+        🔥 Help me lose weight
+
+        Try asking me something!
+        """
 
     return {"reply": reply}
 # =========================
