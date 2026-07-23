@@ -263,45 +263,94 @@ def summary():
 # =========================
 @app.route("/chat", methods=["POST"])
 def chat():
-
     data = request.get_json()
     message = data["message"].lower()
 
-    if "bmi" in message:
-        reply = f"Your BMI is {session.get('bmi')} ({session.get('bmi_status')})."
+    # Greetings
+    if any(word in message for word in ["hi", "hello", "hey"]):
+        reply = f"Hello {session.get('name','')}! 👋 I'm Nexora. Ask me about your workout, diet, BMI, calories, sleep or water."
 
-    elif "weight" in message:
-        reply = "Your current goal is " + session.get("goal")
-
-    elif "goal" in message:
-        reply = "Your goal is " + session.get("goal")
-
-    elif "diet" in message:
-        reply = "Recommended diet: " + ", ".join(session.get("diet"))
-
-    elif "workout" in message or "exercise" in message:
-        reply = "Workout Plan: " + ", ".join(session.get("workout"))
-
-    elif "water" in message:
-        reply = "Drink " + session.get("water") + " litres of water every day."
-
-    elif "sleep" in message:
-        reply = "Recommended sleep: " + session.get("sleep")
-
-    elif "calories" in message:
-        reply = f"Your daily calorie target is {session.get('calories')} kcal."
-
-    elif "hello" in message or "hi" in message:
-        reply = "Hello! I'm Nexora. Ask me about BMI, diet, workout, calories, sleep or water."
+    elif "how are you" in message or "how are u" in message:
+        reply = "😊 I'm doing great! I'm ready to help with your fitness journey."
 
     elif "thank" in message:
-        reply = "You're welcome! Stay healthy."
+        reply = "You're welcome! 💙 Stay healthy."
+
+    # BMI
+    elif "bmi" in message:
+        reply = f"📊 Your BMI is {session.get('bmi')} ({session.get('bmi_status')})."
+
+    # Calories
+    elif "calorie" in message or "calories" in message:
+        reply = f"🔥 Your recommended daily calories are {session.get('calories')} kcal."
+
+    # Water
+    elif "water" in message or "drink" in message:
+        reply = f"💧 Recommended water intake: {session.get('water')} litres per day."
+
+    # Sleep
+    elif "sleep" in message or "rest" in message:
+        reply = f"😴 Recommended sleep: {session.get('sleep')}."
+
+    # Workout
+    elif "workout" in message or "exercise" in message:
+        reply = "💪 Your workout plan includes:<br>" + "<br>".join(session.get("workout", []))
+
+    # Diet
+    elif "diet" in message or "food" in message:
+        reply = "🥗 Your recommended diet includes:<br>" + "<br>".join(session.get("diet", []))
+
+    # Walking
+    elif "walking" in message:
+        reply = "🚶 Walking for 30-45 minutes daily is recommended for general fitness."
+
+    # Running
+    elif "running" in message or "jogging" in message:
+        reply = "🏃 Beginners should start with 20-30 minutes of running or jogging, 3-5 days a week."
+
+    # Cycling
+    elif "cycling" in message or "cycle" in message:
+        reply = "🚴 Cycling for about 30-45 minutes (or 8-15 km) is a great workout. Beginners can start with 3-4 sessions per week."
+
+    # Pushups
+    elif "push" in message:
+        reply = "💪 Beginners can start with 8-12 push-ups for 2-3 sets."
+
+    # Squats
+    elif "squat" in message:
+        reply = "🦵 Beginners should try 10-15 squats for 2-3 sets."
+
+    # Yoga
+    elif "yoga" in message:
+        reply = "🧘 20-30 minutes of yoga daily helps improve flexibility and reduces stress."
+
+    # Protein
+    elif "protein" in message:
+        reply = "🥚 Protein helps build and repair muscles. Include eggs, chicken, fish, milk, beans or paneer."
+
+    # Weight loss
+    elif "weight loss" in message:
+        reply = "🔥 Weight loss works best with calorie deficit, regular cardio, strength training and healthy eating."
+
+    # Muscle gain
+    elif "muscle" in message:
+        reply = "💪 For muscle gain, focus on strength training, protein-rich food and proper sleep."
 
     else:
-        reply = "Sorry, I don't know that yet. Try asking about BMI, diet, workout, calories, water or sleep."
+        reply = (
+            "🤖 I don't know that yet.<br><br>"
+            "Try asking:<br>"
+            "• What is my BMI?<br>"
+            "• Show my workout<br>"
+            "• Show my diet<br>"
+            "• How much water should I drink?<br>"
+            "• How many calories do I need?<br>"
+            "• How long should I sleep?<br>"
+            "• Is cycling good?<br>"
+            "• How many pushups should I do?"
+        )
 
     return {"reply": reply}
-
 # =========================
 # RUN APP
 # =========================
