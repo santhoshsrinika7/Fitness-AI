@@ -117,14 +117,14 @@
   <button onclick="sendMessage()" style="width:25%;padding:5px;background:#2563eb;color:white;border:none;border-radius:8px;margin-top:5px;">Send</button>
 </div>
 
-<script>
-function sendMessage() {
- <script>
+
+
+  <script>
 function sendMessage() {
 
     const userMessage = document.getElementById("chat-input").value;
 
-    if(userMessage.trim() == ""){
+    if (userMessage.trim() == "") {
         return;
     }
 
@@ -137,15 +137,13 @@ function sendMessage() {
     fetch("/chat", {
         method: "POST",
         headers: {
-            "Content-Type":"application/json"
+            "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            message:userMessage
+            message: userMessage
         })
     })
-
     .then(response => response.json())
-
     .then(data => {
 
         chatWindow.innerHTML += `
@@ -153,13 +151,11 @@ function sendMessage() {
         `;
 
         chatWindow.scrollTop = chatWindow.scrollHeight;
+        document.getElementById("chat-input").value = "";
 
     });
 
-    document.getElementById("chat-input").value = "";
-
 }
-</script>
 </script>
 
 </body>
