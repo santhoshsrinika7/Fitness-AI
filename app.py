@@ -195,11 +195,73 @@ def recommend():
             ]
 
     # -------- Diet --------
-    diet = []
-    if diet_type == "Vegetarian":
-        diet = ["🥛 Milk", "🍎 Fruits", "🥦 Vegetables"]
-    else:
-        diet = ["🍗 Chicken", "🥚 Eggs", "🐟 Fish"]
+
+diet = []
+
+
+if diet_type == "Vegetarian":
+
+    if goal == "Weight Loss":
+
+        diet = [
+            "🥣 Breakfast: Oats/Poha + Milk + Fruits",
+            "🍛 Lunch: Roti/Rice + Dal + Vegetables",
+            "🥜 Snack: Nuts + Green Tea/Fruits",
+            "🥗 Dinner: Light meal + Paneer + Vegetables"
+        ]
+
+
+    elif goal == "Muscle Gain":
+
+        diet = [
+            "🥣 Breakfast: Oats + Milk + Banana + Nuts",
+            "🍛 Lunch: Rice/Roti + Dal + Paneer + Vegetables",
+            "🥜 Snack: Peanut Butter/Nuts + Fruits",
+            "🥗 Dinner: Paneer + Roti + Healthy Vegetables"
+        ]
+
+
+    else:  # Stay Fit
+
+        diet = [
+            "🥣 Breakfast: Milk + Fruits + Healthy Grains",
+            "🍛 Lunch: Balanced Roti/Rice + Vegetables + Dal",
+            "🥜 Snack: Fruits + Nuts",
+            "🥗 Dinner: Light Balanced Meal"
+        ]
+
+
+else:   # Non Vegetarian
+
+
+    if goal == "Weight Loss":
+
+        diet = [
+            "🥚 Breakfast: Eggs + Fruits + Oats",
+            "🍛 Lunch: Chicken/Fish + Rice/Roti + Vegetables",
+            "🥜 Snack: Nuts + Protein Food",
+            "🥗 Dinner: Lean Protein + Vegetables"
+        ]
+
+
+    elif goal == "Muscle Gain":
+
+        diet = [
+            "🥚 Breakfast: Eggs + Oats + Milk",
+            "🍗 Lunch: Chicken + Rice/Roti + Vegetables",
+            "🥛 Snack: Milk + Nuts + Fruits",
+            "🐟 Dinner: Fish/Chicken + Balanced Meal"
+        ]
+
+
+    else:  # Stay Fit
+
+        diet = [
+            "🥚 Breakfast: Eggs + Fruits + Healthy Grains",
+            "🍗 Lunch: Chicken/Fish + Roti/Rice + Vegetables",
+            "🥜 Snack: Fruits + Nuts",
+            "🥗 Dinner: Balanced Protein Meal"
+        ]
 
     # -------- Save to session --------
     session["name"] = name
