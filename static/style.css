@@ -5,12 +5,17 @@ margin:0;
 padding:0;
 }
 
+/* Full Screen Hero */
 .hero{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:60px;
+    width:100%;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:linear-gradient(135deg,#edf7f6,#d8ecff,#ffffff);
+    overflow:hidden;
 }
+
 
 .hero-left{
 width:50%;
@@ -21,9 +26,10 @@ width:40%;
 text-align:center;
 }
 
-.hero-image{
-width:80%;
-animation:float 4s infinite ease-in-out;
+.hero img{
+    width:90%;
+    max-width:900px;
+    height:auto;
 }
 
 @keyframes float{
@@ -168,4 +174,49 @@ padding:25px;
 
 color:#555;
 
+}
+/* Mobile Responsive */
+@media (max-width:768px){
+
+    .container{
+        width:95%;
+        padding:20px;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    h2{
+        font-size:22px;
+    }
+
+    p{
+        font-size:16px;
+    }
+
+    input,
+    select,
+    textarea,
+    button{
+        width:100%;
+        font-size:16px;
+    }
+
+    .btn{
+        width:100%;
+        display:block;
+        margin:10px 0;
+        text-align:center;
+    }
+
+    img{
+        max-width:100%;
+        height:auto;
+    }
+
+    .card{
+        width:100%;
+        margin:15px 0;
+    }
 }
